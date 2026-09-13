@@ -1,0 +1,38 @@
+name: Trigger Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to release (e.g. 2.3000.1046738589)'
+        required: true
+
+permissions:
+  actions: write
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+          token: ${{ secrets.GH_TOKEN || secrets.GIT_TOKEN || secrets.RELEASE_PAT || secrets.PAT || github.token }}
+
+      - name: Setup Git
+        run: |
+          git config user.name "Thruqe"
+          git config user.email "danielpeter0039@gmail.com"
+
+      - name: Release Tag
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN || secrets.GIT_TOKEN || secrets.RELEASE_PAT || secrets.PAT || github.token }}
+        run: |
+          tag="v${{ inputs.version }}"
+          git tag "${tag}"
+          git push origin "${tag}"
+          gh workflow run publish.yml --ref "${tag}"
