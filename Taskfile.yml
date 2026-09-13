@@ -1,0 +1,33 @@
+version: "3"
+
+tasks:
+  default:
+    cmds:
+      - task --list
+    silent: true
+
+  build:
+    desc: Build the wa-proto CLI binary
+    cmds:
+      - mkdir -p bin
+      - go build -trimpath -ldflags="-s -w -buildid=" -v -o bin/wa-proto .
+
+  test:
+    desc: Run unit tests
+    cmds:
+      - go test -v ./...
+
+  split:
+    desc: Split WAProto.proto into modular wa-core/proto directory structure
+    cmds:
+      - ./bin/wa-proto split -proto WAProto.proto -out ../whatsrook/wa-core/proto
+
+  fetch:
+    desc: Connect to WhatsApp Web and discover script bundle URLs
+    cmds:
+      - ./bin/wa-proto fetch
+
+  compile:
+    desc: Compile wa-core/proto definitions to .pb.go using protoc
+    cmds:
+      - ./bin/wa-proto compile -dir ../whatsrook/wa-core/proto

@@ -1,0 +1,5 @@
+*.tgz
+/debug.log
+node_modules
+bin/
+dist/
