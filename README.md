@@ -1,7 +1,6 @@
 # WA-Proto (Golang)
 
 [![Build Status](https://github.com/Thruqe/wa-proto/actions/workflows/update-proto.yml/badge.svg)](https://github.com/Thruqe/wa-proto/actions)
-[![Go Report Card](https://goreportcard.com/badge/github.com/Thruqe/wa-proto)](https://goreportcard.com/report/github.com/Thruqe/wa-proto)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 
 Pure Go Protocol Buffer (`.proto`) extractor and generator for WhatsApp Web (2.3000.x series).
