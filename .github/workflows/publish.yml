@@ -1,0 +1,47 @@
+name: Publish Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GH_TOKEN || secrets.GIT_TOKEN || secrets.RELEASE_PAT || secrets.PAT || github.token }}
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: 'stable'
+          cache: true
+
+      - name: Compile multi-platform binaries
+        run: |
+          mkdir -p dist
+          GOOS=linux GOARCH=amd64 go build -trimpath -ldflags="-s -w" -o dist/wa-proto-linux-amd64 .
+          GOOS=linux GOARCH=arm64 go build -trimpath -ldflags="-s -w" -o dist/wa-proto-linux-arm64 .
+          GOOS=darwin GOARCH=arm64 go build -trimpath -ldflags="-s -w" -o dist/wa-proto-darwin-arm64 .
+          GOOS=windows GOARCH=amd64 go build -trimpath -ldflags="-s -w" -o dist/wa-proto-windows-amd64.exe .
+
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN || secrets.GIT_TOKEN || secrets.RELEASE_PAT || secrets.PAT || github.token }}
+          RELEASE_TAG: ${{ github.ref_name }}
+        shell: bash
+        run: |
+          if ! gh release view "${RELEASE_TAG}" >/dev/null 2>&1; then
+            gh release create "${RELEASE_TAG}" \
+              dist/* \
+              --title "${RELEASE_TAG}" \
+              --generate-notes
+          fi
