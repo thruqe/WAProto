@@ -1,0 +1,111 @@
+name: Update WAProto
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  schedule:
+    - cron: '0,30 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    if: github.event_name == 'push' || github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: 'stable'
+          cache: true
+
+      - name: Install dependencies
+        run: go mod download
+
+      - name: Run unit tests
+        run: go test -v ./...
+
+      - name: Build CLI binary
+        run: go build -v -o bin/wa-proto .
+
+  update:
+    if: >-
+      (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch')
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      actions: write
+      contents: write
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+          token: ${{ secrets.GH_TOKEN || secrets.GIT_TOKEN || secrets.RELEASE_PAT || secrets.PAT || github.token }}
+
+      - name: Setup Git
+        run: |
+          git config user.name "Thruqe"
+          git config user.email "danielpeter0039@gmail.com"
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: 'stable'
+          cache: true
+
+      - name: Build Go binary
+        run: go build -v -o bin/wa-proto .
+
+      - name: Fetch and generate latest WhatsApp proto
+        run: ./bin/wa-proto fetch
+
+      - name: Check for changes
+        id: changes
+        shell: bash
+        run: |
+          if git diff --quiet; then
+            echo "detected=false" >> "${GITHUB_OUTPUT}"
+          else
+            echo "detected=true" >> "${GITHUB_OUTPUT}"
+          fi
+
+      - name: Validate WAProto.proto
+        if: steps.changes.outputs.detected == 'true'
+        shell: bash
+        run: |
+          msg_count=$(grep -c "^message " WAProto.proto || true)
+          echo "Found $msg_count message definitions in WAProto.proto"
+          if [ "$msg_count" -lt 50 ]; then
+            echo "::error::WAProto.proto contains only $msg_count messages (minimum 50 required). Aborting release."
+            exit 1
+          fi
+
+      - name: Commit and release update
+        if: steps.changes.outputs.detected == 'true'
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN || secrets.GIT_TOKEN || secrets.RELEASE_PAT || secrets.PAT || github.token }}
+        run: |
+          version=$(grep "WhatsApp Version" WAProto.proto | cut -d":" -f2 | xargs)
+          tag="v${version}"
+          if git rev-parse "${tag}" >/dev/null 2>&1 || git ls-remote --tags origin "${tag}" | grep -q "${tag}"; then
+            echo "Tag ${tag} already exists. Skipping release."
+            exit 0
+          fi
+          git add WAProto.proto
+          git commit -m "chore(release): ${tag}"
+          git tag "${tag}"
+          git push --atomic origin HEAD:main "${tag}"
+          gh workflow run publish.yml --ref "${tag}"
