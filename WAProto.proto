@@ -1,7 +1,7 @@
 syntax = "proto2";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1047679681
+/// WhatsApp Version: 2.3000.1047687307
 
 enum ABOUT_CONSUMPTION_SURFACE_TYPE {
 	ONE_ON_ONE_CHAT = 1;
@@ -977,6 +977,16 @@ enum AddonMinimizedType {
 enum AeadID {
 	AeadAes128GcmId = 1;
 	AeadChaCha20Poly1305Id = 3;
+}
+
+enum AllowedZoomLevel {
+	ZeroEight = 0;
+	ZeroNine = 0;
+	One = 1;
+	OneOne = 1;
+	OneTwoFive = 1;
+	OneThreeFive = 1;
+	OneFive = 1;
 }
 
 enum AppleSystemFontMetrics {
@@ -7922,6 +7932,7 @@ message GroupHistory {
 	repeated UnCountedAssociatedMessageList uncountedAssociatedMessageLists = 2;
 	repeated WebMessageInfo commentMessages = 3;
 	repeated WebMessageInfo outOfWindowPinnedMessages = 4;
+	optional WebMessageInfo themeMessage = 5;
 }
 
 message GroupHistoryBundleInfo {
@@ -7955,6 +7966,7 @@ message GroupHistoryWithMessageBytes {
 	repeated UnCountedAssociatedMessageListWithMessageBytes uncountedAssociatedMessageLists = 2;
 	repeated WebMessageInfoWithMessageBytes commentMessages = 3;
 	repeated WebMessageInfoWithMessageBytes outOfWindowPinnedMessages = 4;
+	optional WebMessageInfoWithMessageBytes themeMessage = 5;
 }
 
 message GroupMention {
@@ -12592,6 +12604,7 @@ message Message {
 		optional int64 messageCount = 3;
 		repeated string nonHistoryReceivers = 4;
 		optional int64 oldestMessageTimestampInBundle = 5;
+		optional bool includesChatTheme = 6;
 	}
 
 	message MessageHistoryNotice {
@@ -13511,6 +13524,7 @@ message Message {
 		optional string metadataUrl = 30;
 		optional Message.VideoMessage.VideoSourceType videoSourceType = 31;
 		optional string dashManifestUrl = 33;
+		optional int64 smartThumbnailTs = 34;
 	}
 
 	optional string conversation = 1;
@@ -23542,6 +23556,7 @@ message WebMessageInfo {
 		ORDER_EPHEMERAL_EXEMPTION = 250;
 		CAMEO_CHAT_CREATED = 254;
 		CAMEO_TRANSITIONED = 256;
+		SENDER_SIDE_CONTACT_INFO = 255;
 	}
 
 	optional MessageKey key = 1;
