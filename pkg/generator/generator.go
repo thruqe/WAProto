@@ -192,7 +192,7 @@ func GenerateModular(schema *ast.ProtoSchema, outDir string) (*Report, error) {
 			}
 
 			if refPkg != "" && refPkg != pkgDir {
-				if refPkg == "waE2E" && pkgDir != "waHistorySync" && pkgDir != "waWeb" && pkgDir != "waGroupHistory" {
+				if refPkg == "waE2E" && pkgDir != "waHistorySync" && pkgDir != "waWeb" && pkgDir != "waGroupHistory" && pkgDir != "waE2EGuest" {
 					continue
 				}
 				if pkgDir == "waE2E" && (refPkg == "waHistorySync" || refPkg == "waWeb" || refPkg == "waGroupHistory") {
@@ -529,13 +529,16 @@ func mergeMessage(existing *ast.MessageDef, incoming *ast.MessageDef, topLevelMs
 
 func mergeEnumValues(existing *ast.EnumDef, incoming *ast.EnumDef) {
 	valByID := make(map[int]bool)
+	valByName := make(map[string]bool)
 	for _, v := range existing.Values {
 		valByID[v.ID] = true
+		valByName[v.Name] = true
 	}
 	for _, inv := range incoming.Values {
-		if !valByID[inv.ID] {
+		if !valByID[inv.ID] && !valByName[inv.Name] {
 			existing.Values = append(existing.Values, inv)
 			valByID[inv.ID] = true
+			valByName[inv.Name] = true
 		}
 	}
 }
