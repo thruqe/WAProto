@@ -1,7 +1,7 @@
 syntax = "proto2";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1047806989
+/// WhatsApp Version: 2.3000.1047819263
 
 enum ABOUT_CONSUMPTION_SURFACE_TYPE {
 	ONE_ON_ONE_CHAT = 1;
@@ -6690,6 +6690,13 @@ enum DrainReason {
 	DrainReason_AppServerPush = 2;
 	DrainReason_GracePeriodExpired = 3;
 	DrainReason_Unknown = 4;
+}
+
+enum DtlsCertCacheMode {
+	OFF = 0;
+	RECONNECT_ONLY = 1;
+	ALL = 2;
+	ALL_WITH_PREWARM = 3;
 }
 
 enum E2EE_TYPE {
@@ -17354,6 +17361,7 @@ enum REPORTING_TOKEN_VALIDATION_FAILURE_REASON {
 enum REPORTING_TOKEN_VERSION {
 	DEFAULT = 1;
 	HISTORY_SYNC = -1;
+	V3 = 3;
 }
 
 enum REPORT_TO_ADMIN_INTERACTION {
@@ -22407,14 +22415,6 @@ enum WAP_JID_SUBTYPE {
 	JID_AD = 1;
 	JID_FB = 3;
 	JID_INTEROP = 4;
-}
-
-enum WATheiaRaTlsState {
-	INIT = 0;
-	CONNECTING = 1;
-	CONNECTED = 2;
-	CLOSED = 3;
-	ERROR = 4;
 }
 
 enum WAWebSuspiciousContent {
