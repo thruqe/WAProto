@@ -1,7 +1,7 @@
 syntax = "proto2";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1047819263
+/// WhatsApp Version: 2.3000.1047824257
 
 enum ABOUT_CONSUMPTION_SURFACE_TYPE {
 	ONE_ON_ONE_CHAT = 1;
@@ -350,6 +350,18 @@ message ADVSignedKeyIndexList {
 enum AD_CONTENT_RECOMMENDATION_TYPE {
 	REGULAR = 1;
 	RECOMMENDED = 2;
+}
+
+enum AD_PUBLISH_FRICTION_CHALLENGE_ERROR_CODE {
+	TWO_FACTOR = 2446859;
+	TWO_FACTOR_SYNC = 3858008;
+	SMS = 2446945;
+	SMS_SYNC = 3858009;
+	IDV = 2446980;
+	IDV_SYNC = 3858010;
+	PEER_APPROVAL = 2446984;
+	NAV = 3858013;
+	APF = 3858385;
 }
 
 enum AEC_MODE {
@@ -782,6 +794,27 @@ enum APP_LAUNCH_TYPE {
 	LUKEWARM = 3;
 }
 
+enum APP_PLATFORM {
+	WEB = 1;
+	CANVAS = 2;
+	MOBILE_WEB = 3;
+	IPHONE = 4;
+	IPAD = 5;
+	ANDROID = 6;
+	IOS = 7;
+	DESKTOP_CANVAS = 8;
+	WINDOWS = 9;
+	AMAZON = 10;
+	GAMEROOM = 11;
+	INSTANT_GAME = 12;
+	OCULUS = 13;
+	SAMSUNG = 14;
+	APKPURE = 15;
+	APKMONK = 18;
+	XIAOMI = 19;
+	HORIZON_WORLD = 22;
+}
+
 enum ATTACHMENT_TRAY_ACTION_TARGET_TYPE {
 	ATTACHMENT_TRAY = 1;
 	DOCUMENT = 2;
@@ -977,6 +1010,11 @@ enum AddonMinimizedType {
 enum AeadID {
 	AeadAes128GcmId = 1;
 	AeadChaCha20Poly1305Id = 3;
+}
+
+enum AgeRange {
+	ageMin = 18;
+	ageMax = 65;
 }
 
 enum AllowedZoomLevel {
@@ -2466,6 +2504,14 @@ enum BuildType {
 	DEBUG = 3;
 }
 
+enum BusinessSupportCaseSubmissionSection {
+	Issue = 0;
+	Asset = 1;
+	Help = 2;
+	Segment = 3;
+	Feedback = 4;
+}
+
 enum CA2D_EXTENSION_ADD_FAILURE_REASON {
 	UNDEFINED = 0;
 	OHAI_REQ_TIMEOUT = 1;
@@ -3484,6 +3530,13 @@ enum CHANNEL_USER_TYPE {
 	GUEST = 4;
 }
 
+enum CHART_DEFAULT_GUTTER {
+	top = 0;
+	bottom = 8;
+	left = 16;
+	right = 16;
+}
+
 enum CHATBAR_INITIAL_STATE {
 	EMPTY = 1;
 	CONTAINS_DRAFT = 2;
@@ -4041,6 +4094,13 @@ enum COLLECTION {
 	CRITICAL_UNBLOCK_LOW = 5;
 }
 
+enum COMMAND_COMMAND_TYPE {
+	EVERYONE = 1;
+	SILENT = 2;
+	AI = 3;
+	AI_IMAGINE = 4;
+}
+
 enum COMMUNITY_CREATION_ACTION_TAKEN_TYPE {
 	ENTER = 1;
 	GET_STARTED = 2;
@@ -4374,6 +4434,25 @@ enum CRASH_TYPE {
 	DISPATCHER_NOT_RESPONDING = 23;
 	MS_CRASH = 24;
 	MAIN_THREAD_STALL = 25;
+}
+
+enum CRES_FIELD_MAX_LENGTHS {
+	challengeAddLabel = 45;
+	challengeDataEntryLabel = 45;
+	challengeInfoHeader = 45;
+	challengeInfoLabel = 45;
+	challengeInfoText = 350;
+	challengeSelectLabel = 45;
+	deviceBindingInfoText = 64;
+	expandInfoLabel = 45;
+	expandInfoText = 256;
+	infoContinueLabel = 45;
+	oobContinueLabel = 45;
+	resendInformationLabel = 45;
+	submitAuthenticationLabel = 45;
+	trustListInfoText = 64;
+	whyInfoLabel = 45;
+	whyInfoText = 256;
 }
 
 enum CROSSPOST_DESTINATION_TYPE {
@@ -5320,6 +5399,34 @@ message CombinedFingerprint {
 	optional FingerprintData remoteFingerprint = 3;
 }
 
+enum CometAIVoiceDataMessageType {
+	USER_CONTEXT = 1;
+	CLIENT_INPUT = 2;
+}
+
+message Command {
+	optional COMMAND_COMMAND_TYPE commandType = 1;
+	optional uint32 offset = 2;
+	optional uint32 length = 3;
+	optional string validationToken = 4;
+}
+
+enum CommandType {
+	MoveTo = 0;
+	LineTo = 1;
+	QuadTo = 2;
+	CubicTo = 3;
+	HorizontalLineTo = 4;
+	VerticalLineTo = 5;
+	CloseLineTo = 6;
+	SmoothQuadTo = 7;
+	CloseQuadTo = 8;
+	CloseSmoothQuadTo = 9;
+	SmoothCubicTo = 10;
+	CloseCubicTo = 11;
+	CloseSmoothCubicTo = 12;
+}
+
 message CommentMetadata {
 	optional MessageKey commentParentKey = 1;
 	optional uint32 replyCount = 2;
@@ -6071,6 +6178,11 @@ enum DEEP_LINK_TYPE {
 	DEEP_LINK_PAYMENT_BR_ADD_PIX_KEY = 261;
 }
 
+enum DEFAULT_ASPECT_RATIO_PARAMS {
+	aspect_ratio_denominator = 16;
+	aspect_ratio_numerator = 9;
+}
+
 enum DEFAULT_AUDIENCE_LOCATION_TYPE {
 	CITY_LEVEL = 1;
 	COUNTRY_LEVEL = 2;
@@ -6081,6 +6193,13 @@ enum DEFAULT_AVATAR_GLYPH_VIEW_BOX {
 	width = 40;
 	x = -8;
 	y = -8;
+}
+
+enum DEFAULT_MER_BREAKPOINTS {
+	desktopLarge = 1921;
+	desktop = 1025;
+	tablet = 768;
+	mobile = 0;
 }
 
 enum DEFAULT_PROTOCOL_RESULT_TYPE {
@@ -6853,6 +6972,11 @@ enum E2E_FAILURE_REASON {
 	ERROR_TEE_IDENTITY_TOKEN = 118;
 }
 
+enum EBDBEnvironment {
+	UI = 0;
+	Worker = 1;
+}
+
 enum EDIT_ATTR {
 	NONE = -1;
 	MESSAGE_EDIT = 1;
@@ -6889,6 +7013,13 @@ enum EDIT_TYPE {
 	ADMIN_REVOKE = 3;
 	ADMIN_EDIT = 4;
 	PIN = 5;
+}
+
+enum EDUCATION_STATUSES {
+	ALL = 0;
+	HIGH_SCHOOL = 1;
+	IN_COLLEGE = 2;
+	COLLEGE_GRAD = 3;
 }
 
 enum EMAIL_STATE {
@@ -7209,6 +7340,11 @@ message EmbeddedMusic {
 	optional int64 overlapDurationInMs = 14;
 }
 
+enum Encoding {
+	UTF8_BYTES = 1;
+	UTF16_STRING = 2;
+}
+
 message EncryptedPairingRequest {
 	optional bytes encryptedPayload = 1;
 	optional bytes iv = 2;
@@ -7390,6 +7526,24 @@ enum FORWARD_PICKER_ORIGIN {
 	PTT_WIDGET = 2;
 }
 
+enum FUTURE_PROOF_BEHAVIOR {
+	PLACEHOLDER = 0;
+	NO_PLACEHOLDER = 1;
+	IGNORE = 2;
+}
+
+enum FeatureLimitType {
+	ALL = 1;
+	COMMENTING = 4;
+	ENTITY_CREATION = 8;
+	ENTITY_JOINING = 16;
+	MESSAGING = 256;
+	POSTING = 2;
+	REACTING = 64;
+	RESHARING = 128;
+	VIEWING_MEMBER_LIST = 32;
+}
+
 message Field {
 	optional uint32 minVersion = 1;
 	optional uint32 maxVersion = 2;
@@ -7506,6 +7660,12 @@ enum GENAI_EXIT_POINT {
 	FULL_SHEET_DIRECT_TO_SETTING = 14;
 	EXIT_MM_SURFACE = 15;
 	COMPOSER_TRANSITION = 16;
+}
+
+enum GENDERS {
+	ALL = 0;
+	MEN = 1;
+	WOMEN = 2;
 }
 
 enum GIF_SEARCH_PROVIDER {
@@ -7927,6 +8087,11 @@ message GlobalSettings {
 	optional NotificationSettings groupNotificationSettings = 18;
 	optional ChatLockSettings chatLockSettings = 19;
 	optional int64 chatDbLidMigrationTimestamp = 20;
+}
+
+enum GradientType {
+	Linear = 0;
+	Radial = 1;
 }
 
 enum GraphQLErrorCode {
@@ -10242,6 +10407,18 @@ enum MARKERS {
 	TEM = 1;
 }
 
+enum MAX_LIMIT {
+	client_init = 100;
+	client_sync = 50;
+	client_task = 20;
+	db_dump = 200;
+	db_init = 100;
+	general = 50;
+	ls = 50;
+	maw_setup = 10;
+	user_experience = 200;
+}
+
 enum MD_APP_STATE_KEY_ROTATION_REASON_CODE {
 	APP_STATE_SYNC_KEY_EXPIRY = 1;
 	DEVICE_DEREGISTERATION = 2;
@@ -10844,6 +11021,10 @@ enum MEDIA_UPLOAD_RESULT_TYPE {
 	ERROR_WAMSYS = 40;
 	ERROR_INVALID_URL = 41;
 	INTEGRITY_CHECK_FAILURE = 42;
+}
+
+enum MENTION_MENTION_TYPE {
+	PROFILE = 0;
 }
 
 enum MENTION_TYPE {
@@ -11672,6 +11853,13 @@ enum MediaVisibility {
 message MemberLabel {
 	optional string label = 1;
 	optional int64 labelTimestamp = 2;
+}
+
+message Mention {
+	optional MENTION_MENTION_TYPE mentionType = 1;
+	optional string mentionedJid = 2;
+	optional uint32 offset = 3;
+	optional uint32 length = 4;
 }
 
 message Message {
@@ -13765,6 +13953,13 @@ message MessageSecretMessage {
 	optional sfixed32 version = 1;
 	optional bytes encIv = 2;
 	optional bytes encPayload = 3;
+}
+
+message MessageText {
+	optional string text = 1;
+	repeated string mentionedJid = 2;
+	repeated Command commands = 3;
+	repeated Mention mentions = 4;
 }
 
 message Money {
@@ -16380,6 +16575,24 @@ message PairingRequest {
 	optional bytes advSecret = 3;
 }
 
+enum PasskeyErrorCodes {
+	NOT_ALLOWED_ERROR = 0;
+	CONSTRAINT_ERROR = 1;
+	INVALID_STATE_ERROR = 2;
+	NOT_SUPPORTED_ERROR = 3;
+	SECURITY_ERROR = 4;
+	ABORT_ERROR = 5;
+	UNKNOWN_ERROR = 6;
+}
+
+enum PasskeyErrorType {
+	USER_CANCELLED_REAUTH_ERROR = 0;
+	USER_CANCELLED_OS_DIALOG_ERROR = 1;
+	UNSUPPORTED_PASSWORD_MANAGER_ERROR = 2;
+	UNSUPPORTED_USER_AGENT_ERROR = 3;
+	UNKNOWN_ERROR = 4;
+}
+
 message PastParticipant {
 	enum LeaveReason {
 		LEFT = 0;
@@ -16546,6 +16759,11 @@ enum PaymentTransactionType {
 	TYPE_DEPOSIT = 500;
 	TYPE_REFUND = 600;
 	TYPE_WITHDRAWAL = 700;
+}
+
+enum PcaUGroupIndex {
+	DYNAMIC_GROUP_INDEX = 0;
+	STATIC_GROUP_INDEX = 1;
 }
 
 enum PendingReadReceiptType {
@@ -17371,6 +17589,12 @@ enum REPORT_TO_ADMIN_INTERACTION {
 	CLICK_CANCEL_SEND_FOR_ADMIN_REVIEW = 3;
 }
 
+enum RESET_PAGE_IDS {
+	ad_page_id = 0;
+	adset_page_id = 0;
+	campaign_page_id = 0;
+}
+
 enum RESHARE_SOURCE {
 	MENTIONS_RESHARE = 1;
 	STATUS_RESHARE = 2;
@@ -18091,6 +18315,11 @@ enum SIGN_CREDENTIAL_RESULT {
 	ERROR_CLIENT_NETWORK = 5;
 }
 
+enum SIZE {
+	WIDE = 555;
+	STANDARD = 445;
+}
+
 enum SIZE_BUCKET {
 	LT32 = 1;
 	LT64 = 2;
@@ -18253,6 +18482,11 @@ enum SP_SIGNAL_NOT_SHARED_REASON {
 	INVALID_URL = 4;
 }
 
+enum STAGE_CHROME {
+	x = 82;
+	y = 42;
+}
+
 enum STAGE_FAILURE_REASON_ENUM {
 	MALFORMED_PEER_MESSAGE = 1;
 	INITIATED_LOGOUT_BASED_ON_MAPPING = 2;
@@ -18261,6 +18495,11 @@ enum STAGE_FAILURE_REASON_ENUM {
 	COMPANION_UNSUPPORTED_VERSION = 5;
 	INTERNAL_ERROR = 6;
 	COMPANION_TIMEOUT_BASED_ON_DEVICE_CAPABILITY = 7;
+}
+
+enum STAGE_NORMAL_MAX {
+	x = 960;
+	y = 960;
 }
 
 enum STANZA_TYPE {
@@ -19592,6 +19831,13 @@ enum SURFACE_TYPE {
 	GEN_AI_AGENT_SMART_COMPOSER_REPLY_CARD = 340;
 }
 
+enum SV_LOG_LEVEL {
+	DEBUG = 4;
+	INFO = 3;
+	WARN = 2;
+	ERROR = 1;
+}
+
 enum SW_AEC_TYPE {
 	NONE = 1;
 	SPEEX = 2;
@@ -20070,6 +20316,29 @@ enum StreamStatus {
 	STARTED = 3;
 	STOPPED = 4;
 	CLOSED = 5;
+}
+
+enum StreamType {
+	Unknown = 0;
+	Default = 1;
+	ScreenShare = 2;
+}
+
+enum StrokeLineCap {
+	Butt = 0;
+	Round = 1;
+	Square = 2;
+}
+
+enum StrokeLineJoin {
+	Miter = 0;
+	Round = 1;
+	Bevel = 2;
+}
+
+message SubProtocol {
+	optional bytes payload = 1;
+	optional int32 version = 2;
 }
 
 message SyncActionData {
@@ -21175,6 +21444,15 @@ enum TRUST_SIGNAL_BUCKETS {
 	B1M = 11;
 }
 
+enum TSLOG_METRIC_SCALE {
+	audioLevel = 10000;
+	jitter = 1000;
+	totalAudioEnergy = 10000;
+	totalDecodeTime = 1000;
+	totalEncodeTime = 1000;
+	totalSamplesDuration = 1000;
+}
+
 enum TS_EXTERNAL_EVENT_SOURCE {
 	CALL = 1;
 	VIDEO = 2;
@@ -21542,6 +21820,19 @@ message TemplateButton {
 	}
 }
 
+enum TextWeight {
+	Thin = 0;
+	UltraLight = 1;
+	Light = 2;
+	Book = 3;
+	Medium = 4;
+	SemiBold = 5;
+	Bold = 6;
+	UltraBold = 7;
+	Heavy = 8;
+	UltraHeavy = 9;
+}
+
 enum ThemesSettingValue {
 	SystemDefault = 0;
 	Light = 1;
@@ -21563,6 +21854,18 @@ enum TimeFormatSource {
 	DeviceTimeFormat = 2;
 	PhoneTimeFormat = 1;
 	LocaleTimeFormat = 0;
+}
+
+enum TrackMatteType {
+	None = 0;
+	Alpha = 1;
+	Alpha_Inverted = 2;
+}
+
+enum TweenType {
+	Bezier = 0;
+	Linear = 1;
+	Hold = 2;
 }
 
 enum UFAD_REPORT_TYPE {
@@ -22167,6 +22470,116 @@ enum VERIFIED_LEVEL {
 	HIGH = 2;
 }
 
+enum VERSION {
+	V21 = 21;
+	V22 = 22;
+	V23 = 23;
+	V24 = 24;
+	V25 = 25;
+	V26 = 26;
+	V27 = 27;
+	V28 = 28;
+	V29 = 29;
+	V30 = 30;
+	V31 = 31;
+	V32 = 32;
+	V33 = 33;
+	V34 = 34;
+	V35 = 35;
+	V36 = 36;
+	V37 = 37;
+	V38 = 38;
+	V39 = 39;
+	V40 = 40;
+	V41 = 41;
+	V42 = 42;
+	V43 = 43;
+	V44 = 44;
+	V45 = 45;
+	V46 = 46;
+	V47 = 47;
+	V48 = 48;
+	V49 = 49;
+	V50 = 50;
+	V51 = 51;
+	V52 = 52;
+	V53 = 53;
+	V54 = 54;
+	V55 = 55;
+	V56 = 56;
+	V57 = 57;
+	V58 = 58;
+	V59 = 59;
+	V60 = 60;
+	V61 = 61;
+	V62 = 62;
+	V63 = 63;
+	V64 = 64;
+	V65 = 65;
+	V66 = 66;
+	V67 = 67;
+	V68 = 68;
+	V69 = 69;
+	V70 = 70;
+	V71 = 71;
+	V72 = 72;
+	V73 = 73;
+	V74 = 74;
+	V75 = 75;
+	V76 = 76;
+	V77 = 77;
+	V78 = 78;
+	V79 = 79;
+	V80 = 80;
+	V81 = 81;
+	V82 = 82;
+	V83 = 83;
+	V84 = 84;
+	V85 = 85;
+	V86 = 86;
+	V87 = 87;
+	V88 = 88;
+	V89 = 89;
+	V90 = 90;
+	V91 = 91;
+	V92 = 92;
+	V93 = 93;
+	V94 = 94;
+	V95 = 95;
+	V96 = 96;
+	V97 = 97;
+	V98 = 98;
+	V99 = 99;
+	V100 = 100;
+	V101 = 101;
+	V102 = 102;
+	V103 = 103;
+	V104 = 104;
+	V105 = 105;
+	V106 = 106;
+	V107 = 107;
+	V108 = 108;
+	V109 = 109;
+	V110 = 110;
+	V111 = 111;
+	V112 = 112;
+	V113 = 113;
+	V114 = 114;
+	V115 = 115;
+	V116 = 116;
+	V117 = 117;
+	V118 = 118;
+	V119 = 119;
+	V120 = 120;
+	V121 = 121;
+	V122 = 122;
+	V123 = 123;
+	V124 = 124;
+	V125 = 125;
+	V126 = 126;
+	V127 = 127;
+}
+
 enum VIDEO_PLAY_ORIGIN {
 	CONVERSATION = 1;
 	GALLERY_PICKER = 2;
@@ -22278,6 +22691,21 @@ enum VO_SS_ACTION {
 	SCREEN_RECORDING_BLOCKED = 13;
 	SCREEN_RECORDING_STARTED = 14;
 	PLACEHOLDER_MESSAGE_LEARN_MORE_TAP = 15;
+}
+
+enum ValueRulesModalEntryPoint {
+	ADVERTISING_SETTINGS = 0;
+	L2_CONVERSION_LOCATION = 1;
+	L2_GLOBAL = 2;
+	L2_PLACEMENT = 3;
+	L2_NCA_GOAL = 4;
+	L2_AUDIENCE = 5;
+	L2_BROAD_GOAL = 6;
+}
+
+enum VectorCompositeOrder {
+	FillStroke = 0;
+	StrokeFill = 1;
 }
 
 message VerifiedNameCertificate {
@@ -23232,6 +23660,16 @@ enum WSUA_TIER {
 	TIER_3 = 3;
 }
 
+enum WWW_QPL_END_ACTION {
+	START = 1;
+	SUCCESS = 2;
+	FAIL = 3;
+	CANCEL = 4;
+	TIMEOUT = 113;
+	OFFLINE = 160;
+	ERROR = 87;
+}
+
 enum WaitingRoomFilter {
 	None = 0;
 	GuestsOnly = 1;
@@ -23697,14 +24135,155 @@ enum XMPP_STATUS {
 	UNKNOWN = 4;
 }
 
+enum ZenonDismissReason {
+	IgnoreCall = 0;
+	HangupCall = 1;
+	InAnotherCall = 2;
+	AcceptAfterHangUp = 3;
+	NoAnswerTimeout = 4;
+	IncomingTimeout = 5;
+	OtherInstanceHandled = 6;
+	SignalingMessageFailed = 7;
+	ConnectionDropped = 8;
+	ClientInterrupted = 9;
+	WebRTCError = 10;
+	ClientError = 11;
+	NoPermission = 12;
+	OtherNotCapable = 13;
+	NoUIShown = 14;
+	VersionUnsupported = 15;
+	CallerNotVisible = 16;
+	CarrierBlocked = 17;
+	OtherCarrierBlocked = 18;
+	ClientEncryptionError = 19;
+	MicrophonePermissionDenied = 20;
+	CameraPermissionDenied = 21;
+	SessionMigrated = 22;
+	RingMuted = 23;
+	JoinApprovalDenied = 24;
+	RejectedByCallee = 25;
+	CallEndedByProduct = 26;
+	CallEnded = 27;
+	AnsweredOnAnotherDevice = 28;
+	RejectedOnAnotherDevice = 29;
+	CallCollision = 30;
+	MaxAllowedParticipantsReached = 31;
+	UnexpectedEndOfCall = 32;
+	TxAckTimeout = 33;
+	EndToEndEncryptionInvariantViolated = 34;
+	ProductServerDefinedEndReason = 35;
+	RemovedByParticipant = 39;
+	AnsweredByOtherUser = 40;
+	CallerHasAppealableCallingRestriction = 41;
+}
+
+enum ZenonDuplicatedParticipantsProcessingMode {
+	KEEP_ALL_PARTICIPANTS = 0;
+	REMOVE_DUPLICATED = 1;
+	DISCONNECT_DUPLICATED = 2;
+}
+
+enum ZenonMWTrackLabel {
+	DEFAULT_AUDIO = 0;
+	DEFAULT_VIDEO = 1;
+	SCREEN_AUDIO = 2;
+	SCREEN_VIDEO = 3;
+}
+
+enum ZenonNetworkQuality {
+	Excellent = 4;
+	Good = 3;
+	Fair = 2;
+	Poor = 1;
+	Disconnected = 0;
+}
+
+enum ZenonParticipantState {
+	UNKNOWN = 0;
+	ADDING = 1;
+	CONTACTING = 2;
+	RINGING = 3;
+	ACCEPTING = 4;
+	PRECONNECTING = 5;
+	CONNECTING = 6;
+	CONNECTED = 7;
+	REMOVING = 8;
+	DISCONNECTED = 9;
+	NO_ANSWER = 10;
+	REJECTED = 11;
+	UNREACHABLE = 12;
+	CONNECTION_DROPPED = 13;
+	PARTICIPANT_LIMIT_REACHED = 14;
+	IN_ANOTHER_CALL = 15;
+	RING_TYPE_UNSUPPORTED = 16;
+	PENDING_APPROVAL = 17;
+	APPROVING = 18;
+	DENYING = 19;
+	APPROVED = 20;
+	FAILED_APPROVAL = 21;
+	HANGUP_IN_WAITING_ROOM = 22;
+	RECONNECTING = 23;
+}
+
+enum ZenonSignalingStatusCode {
+	OK = 0;
+	REJECTED_FROM_VERSION_DOES_NOT_MATCH = 1;
+	METHOD_NOT_ALLOWED = 2;
+}
+
+enum ZenonSignalingStatusSubCode {
+	CLIENT_TERMINATED = 0;
+}
+
+enum afterIDs {
+	PROFILING_COUNTERS = 0;
+	HEARTBEAT = 1;
+	FLUX_PERF_TOOL = 2;
+}
+
+enum beforeIDs {
+	PROFILING_COUNTERS = 0;
+	HEARTBEAT = 1;
+	FLUX_PERF_TOOL = 2;
+}
+
 enum default {
-	STATIC = 0;
-	DYNAMIC = 1;
-	BIOMETRIC = 2;
+	UNKNOWN = 1;
+	DISMISSED = 2;
+	REJECTED = 3;
+	APPROVED = 4;
+}
+
+enum defaultOrder {
+	EXTENDED_CREDIT = 1;
+	CREDIT_CARD = 2;
+	NEW_CREDIT_CARD = 3;
+	BM_OPTION = 4;
+	PAYPAL_BA = 5;
+	NEW_PAYPAL_BA = 6;
+	DIRECT_DEBIT = 7;
+	NEW_DIRECT_DEBIT = 8;
+	ALT_PAY = 9;
+	FB_TOKEN = 98;
+	DUMMY = 99;
 }
 
 enum defaultProps {
 	forceResetErrorCount = 0;
+}
+
+enum directDebitFirstOrder {
+	DIRECT_DEBIT = 1;
+	EXTENDED_CREDIT = 2;
+	CREDIT_CARD = 3;
+	NEW_CREDIT_CARD = 4;
+	BM_OPTION = 5;
+	PAYPAL_BA = 6;
+	NEW_PAYPAL_BA = 7;
+	NEW_DIRECT_DEBIT = 8;
+	ALT_PAY = 9;
+	FB_TOKEN = 98;
+	DUMMY = 99;
 }
 
 enum dynamicTypography {
@@ -23727,6 +24306,10 @@ enum exports {
 	UNKNOWN_SINGULAR = 7;
 }
 
+enum id {
+	contents = 0;
+}
+
 enum internalDefaults {
 	version = 1;
 }
@@ -23742,5 +24325,10 @@ enum qplActionMap {
 	START = 1;
 	SUCCESS = 2;
 	TIMEOUT = 113;
+}
+
+enum wholeYearRangeInYears {
+	since = -271820;
+	until = 275760;
 }
 
