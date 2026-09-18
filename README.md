@@ -1,29 +1,15 @@
-# WA-Proto (Golang)
+# WhatsApp Protocol Buffers
 
-[![Build Status](https://github.com/Thruqe/wa-proto/actions/workflows/update-proto.yml/badge.svg)](https://github.com/Thruqe/wa-proto/actions)
+[![Build Status](https://github.com/thruqe/WAProto/actions/workflows/update-proto.yml/badge.svg)](https://github.com/Thruqe/wa-proto/actions)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 
-Pure Go Protocol Buffer (`.proto`) extractor and generator for WhatsApp Web (2.3000.x series).
-
-This project enables Go developers to extract live WhatsApp Web protobuf definitions and generate both monolithic schemas (`WAProto.proto`) and modular package structures (for `whatsmeow` / `wa-core`).
-
-## Features
-
-- **100% Pure Go**: Zero Node.js, Puppeteer, or JavaScript dependencies.
-- **Direct Web Extraction**: Connects to `web.whatsapp.com`, identifies bundles, and parses JavaScript AST directly using pure Go (`goja/parser`).
-- **Dual Output Modes**:
-  - **Monolithic (`proto3`)**: Emits unified `WAProto.proto` under `package waproto;`.
-  - **Modular (`proto2`)**: Automatically partitions definitions into 57+ modular packages matching `wa-core/proto/*/*.proto` (e.g. `waE2E`, `waAdv`, `waAICommon`, `instamadilloAddMessage`, etc.) with automated cross-package import resolution.
-- **Client Payload Synchronization**: Automatically updates WhatsApp Web client revision numbers in `wa-core/store/clientpayload.go`.
-- **Integrated Compiler**: Can automatically invoke `protoc` + `protoc-gen-go` to produce compiled `.pb.go` bindings.
-- **Automated GitHub Actions**: Native Go workflows for scheduled updates and releases.
+Fetch and extract live WhatsApp Web protobuf definitions and generate both monolithic schemas (`WAProto.proto`) and modular package structures.
 
 ## Installation & Build
 
 ```bash
 # Build binary
 task build
-# or: go build -o bin/wa-proto .
 ```
 
 ## CLI Commands
@@ -45,22 +31,22 @@ Commands:
 
 #### 1. Split monolithic `WAProto.proto` into `wa-core/proto`
 ```bash
-./bin/wa-proto split -proto WAProto.proto -out ../whatsrook/wa-core/proto
+wa-proto split -proto WAProto.proto -out ../whatsrook/wa-core/proto
 ```
 
 #### 2. Fetch live JavaScript bundles and extract schema
 ```bash
-./bin/wa-proto fetch -out WAProto.proto
+wa-proto fetch -out WAProto.proto
 ```
 
 #### 3. Compile `.proto` files to `.pb.go`
 ```bash
-./bin/wa-proto compile -dir ../whatsrook/wa-core/proto
+wa-proto compile -dir ../whatsrook/wa-core/proto
 ```
 
 #### 4. Full end-to-end synchronization
 ```bash
-./bin/wa-proto sync -proto WAProto.proto -out ../whatsrook/wa-core/proto -compile
+wa-proto sync -proto WAProto.proto -out ../whatsrook/wa-core/proto -compile
 ```
 
 ## Package Layout
