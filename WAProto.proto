@@ -1,7 +1,7 @@
 syntax = "proto2";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1047882213
+/// WhatsApp Version: 2.3000.1047888330
 
 enum ABOUT_CONSUMPTION_SURFACE_TYPE {
 	ONE_ON_ONE_CHAT = 1;
@@ -22542,6 +22542,14 @@ enum WAP_JID_SUBTYPE {
 	JID_AD = 1;
 	JID_FB = 3;
 	JID_INTEROP = 4;
+}
+
+enum WATheiaRaTlsState {
+	INIT = 0;
+	CONNECTING = 1;
+	CONNECTED = 2;
+	CLOSED = 3;
+	ERROR = 4;
 }
 
 enum WAWebSuspiciousContent {
