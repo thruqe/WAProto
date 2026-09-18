@@ -1,7 +1,7 @@
 syntax = "proto2";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1047824257
+/// WhatsApp Version: 2.3000.1047853221
 
 enum ABOUT_CONSUMPTION_SURFACE_TYPE {
 	ONE_ON_ONE_CHAT = 1;
@@ -96,6 +96,11 @@ message ACP2Setting {
 	optional LimitSharing.TriggerType trigger = 2;
 	optional int64 settingTimestamp = 3;
 	optional bool initiatedByMe = 4;
+}
+
+enum ACP_VERSION_TYPE {
+	ACP_V1 = 1;
+	ACP_V2 = 2;
 }
 
 enum ACTION_CODE {
@@ -350,18 +355,6 @@ message ADVSignedKeyIndexList {
 enum AD_CONTENT_RECOMMENDATION_TYPE {
 	REGULAR = 1;
 	RECOMMENDED = 2;
-}
-
-enum AD_PUBLISH_FRICTION_CHALLENGE_ERROR_CODE {
-	TWO_FACTOR = 2446859;
-	TWO_FACTOR_SYNC = 3858008;
-	SMS = 2446945;
-	SMS_SYNC = 3858009;
-	IDV = 2446980;
-	IDV_SYNC = 3858010;
-	PEER_APPROVAL = 2446984;
-	NAV = 3858013;
-	APF = 3858385;
 }
 
 enum AEC_MODE {
@@ -672,6 +665,11 @@ enum AI_QP_SURFACE_TYPE {
 	HERO_CARD = 2;
 }
 
+enum AI_SUB_BLOCK_SOURCE {
+	CACHE = 1;
+	SERVER = 2;
+}
+
 enum AI_SUB_COMPONENT {
 	UNIFIED_RESPONSE_UPSELL = 1;
 	CREDITS_EXHAUSTED_SNACKBAR = 2;
@@ -792,27 +790,6 @@ enum APP_LAUNCH_TYPE {
 	COLD = 1;
 	WARM = 2;
 	LUKEWARM = 3;
-}
-
-enum APP_PLATFORM {
-	WEB = 1;
-	CANVAS = 2;
-	MOBILE_WEB = 3;
-	IPHONE = 4;
-	IPAD = 5;
-	ANDROID = 6;
-	IOS = 7;
-	DESKTOP_CANVAS = 8;
-	WINDOWS = 9;
-	AMAZON = 10;
-	GAMEROOM = 11;
-	INSTANT_GAME = 12;
-	OCULUS = 13;
-	SAMSUNG = 14;
-	APKPURE = 15;
-	APKMONK = 18;
-	XIAOMI = 19;
-	HORIZON_WORLD = 22;
 }
 
 enum ATTACHMENT_TRAY_ACTION_TARGET_TYPE {
@@ -1010,11 +987,6 @@ enum AddonMinimizedType {
 enum AeadID {
 	AeadAes128GcmId = 1;
 	AeadChaCha20Poly1305Id = 3;
-}
-
-enum AgeRange {
-	ageMin = 18;
-	ageMax = 65;
 }
 
 enum AllowedZoomLevel {
@@ -1227,6 +1199,7 @@ enum BANNER_TYPES {
 	META_AI_THREADING_WIND_DOWN = 124;
 	WEB_CALLING_ACTIVATION_BANNER = 125;
 	STATUS_OPT_IN_UPSELL_BANNER = 126;
+	QP_UPSELL_BANNER_MEDIA_PICKER_INTERSTITIAL = 127;
 }
 
 enum BB_TIER_TYPE {
@@ -1328,6 +1301,8 @@ enum BLOCK_ENTRY_POINT {
 	CHAT_FMX_CARD_BLOCK_SERVER_FLAGGED_SUSPICIOUS = 58;
 	ONE_TO_ONE_SPAM_BANNER_BLOCK_SERVER_FLAGGED_SUSPICIOUS = 59;
 	TRUST_QUESTION_BOTTOMSHEET_BLOCK_SERVER_FLAGGED_SUSPICIOUS = 60;
+	CHAT_LIST_SWIPE_DELETE_BLOCK_UPSELL = 61;
+	CHAT_LIST_SWIPE_DELETE_REPORT_UPSELL = 62;
 }
 
 enum BLOCK_EVENT_ACTION_TYPE {
@@ -2504,14 +2479,6 @@ enum BuildType {
 	DEBUG = 3;
 }
 
-enum BusinessSupportCaseSubmissionSection {
-	Issue = 0;
-	Asset = 1;
-	Help = 2;
-	Segment = 3;
-	Feedback = 4;
-}
-
 enum CA2D_EXTENSION_ADD_FAILURE_REASON {
 	UNDEFINED = 0;
 	OHAI_REQ_TIMEOUT = 1;
@@ -3530,13 +3497,6 @@ enum CHANNEL_USER_TYPE {
 	GUEST = 4;
 }
 
-enum CHART_DEFAULT_GUTTER {
-	top = 0;
-	bottom = 8;
-	left = 16;
-	right = 16;
-}
-
 enum CHATBAR_INITIAL_STATE {
 	EMPTY = 1;
 	CONTAINS_DRAFT = 2;
@@ -3554,6 +3514,7 @@ enum CHAT_ACTION_CHAT_TYPE {
 	BUSINESS = 3;
 	BROADCAST_LIST = 4;
 	CHANNEL = 5;
+	META_AI = 6;
 }
 
 enum CHAT_ACTION_ENTRY_POINT {
@@ -3568,6 +3529,8 @@ enum CHAT_ACTION_ENTRY_POINT {
 	SPAM_FOLDER = 9;
 	DEPENDENT_MESSAGE_REQUESTS_FOLDER = 10;
 	DEPENDENT_CONVERSATION_MESAGE_REQUEST = 11;
+	SETTINGS = 12;
+	MESSAGE = 13;
 }
 
 enum CHAT_ACTION_TYPE {
@@ -3581,6 +3544,10 @@ enum CHAT_ACTION_TYPE {
 	UNREAD = 8;
 	READ = 9;
 	SUSPEND_CHAT_DELETE = 10;
+	UNARCHIVE = 11;
+	UNPIN = 12;
+	ENABLE_ANNOUNCEMENTS = 13;
+	DISABLE_ANNOUNCEMENTS = 14;
 }
 
 enum CHAT_ASSIGNMENT_ACTION_TYPE {
@@ -3923,6 +3890,8 @@ enum CHAT_FILTER_TYPES {
 	DRAFTS = 26;
 	CAMPAIGN_REPLIES = 27;
 	BUSINESS_FOLDER = 28;
+	TO_YOU = 29;
+	META_AI = 30;
 }
 
 enum CHAT_GATED_REASON {
@@ -4092,13 +4061,6 @@ enum COLLECTION {
 	REGULAR_HIGH = 3;
 	CRITICAL_BLOCK = 4;
 	CRITICAL_UNBLOCK_LOW = 5;
-}
-
-enum COMMAND_COMMAND_TYPE {
-	EVERYONE = 1;
-	SILENT = 2;
-	AI = 3;
-	AI_IMAGINE = 4;
 }
 
 enum COMMUNITY_CREATION_ACTION_TAKEN_TYPE {
@@ -4436,23 +4398,16 @@ enum CRASH_TYPE {
 	MAIN_THREAD_STALL = 25;
 }
 
-enum CRES_FIELD_MAX_LENGTHS {
-	challengeAddLabel = 45;
-	challengeDataEntryLabel = 45;
-	challengeInfoHeader = 45;
-	challengeInfoLabel = 45;
-	challengeInfoText = 350;
-	challengeSelectLabel = 45;
-	deviceBindingInfoText = 64;
-	expandInfoLabel = 45;
-	expandInfoText = 256;
-	infoContinueLabel = 45;
-	oobContinueLabel = 45;
-	resendInformationLabel = 45;
-	submitAuthenticationLabel = 45;
-	trustListInfoText = 64;
-	whyInfoLabel = 45;
-	whyInfoText = 256;
+enum CREATION_FAILURE_REASON {
+	OFFLINE = 1;
+	SERVER_ERROR = 2;
+	TIMEOUT = 3;
+	UNKNOWN = 4;
+}
+
+enum CREATION_STATUS {
+	CREATED = 1;
+	FAILED = 2;
 }
 
 enum CROSSPOST_DESTINATION_TYPE {
@@ -5399,34 +5354,6 @@ message CombinedFingerprint {
 	optional FingerprintData remoteFingerprint = 3;
 }
 
-enum CometAIVoiceDataMessageType {
-	USER_CONTEXT = 1;
-	CLIENT_INPUT = 2;
-}
-
-message Command {
-	optional COMMAND_COMMAND_TYPE commandType = 1;
-	optional uint32 offset = 2;
-	optional uint32 length = 3;
-	optional string validationToken = 4;
-}
-
-enum CommandType {
-	MoveTo = 0;
-	LineTo = 1;
-	QuadTo = 2;
-	CubicTo = 3;
-	HorizontalLineTo = 4;
-	VerticalLineTo = 5;
-	CloseLineTo = 6;
-	SmoothQuadTo = 7;
-	CloseQuadTo = 8;
-	CloseSmoothQuadTo = 9;
-	SmoothCubicTo = 10;
-	CloseCubicTo = 11;
-	CloseSmoothCubicTo = 12;
-}
-
 message CommentMetadata {
 	optional MessageKey commentParentKey = 1;
 	optional uint32 replyCount = 2;
@@ -6176,11 +6103,7 @@ enum DEEP_LINK_TYPE {
 	DEEP_LINK_HATCH_INSTALL = 257;
 	DEEP_LINK_SETTINGS_SCAM_ALERT = 258;
 	DEEP_LINK_PAYMENT_BR_ADD_PIX_KEY = 261;
-}
-
-enum DEFAULT_ASPECT_RATIO_PARAMS {
-	aspect_ratio_denominator = 16;
-	aspect_ratio_numerator = 9;
+	DEEP_LINK_SMB_MX_CLABE = 262;
 }
 
 enum DEFAULT_AUDIENCE_LOCATION_TYPE {
@@ -6193,13 +6116,6 @@ enum DEFAULT_AVATAR_GLYPH_VIEW_BOX {
 	width = 40;
 	x = -8;
 	y = -8;
-}
-
-enum DEFAULT_MER_BREAKPOINTS {
-	desktopLarge = 1921;
-	desktop = 1025;
-	tablet = 768;
-	mobile = 0;
 }
 
 enum DEFAULT_PROTOCOL_RESULT_TYPE {
@@ -6972,11 +6888,6 @@ enum E2E_FAILURE_REASON {
 	ERROR_TEE_IDENTITY_TOKEN = 118;
 }
 
-enum EBDBEnvironment {
-	UI = 0;
-	Worker = 1;
-}
-
 enum EDIT_ATTR {
 	NONE = -1;
 	MESSAGE_EDIT = 1;
@@ -7013,13 +6924,6 @@ enum EDIT_TYPE {
 	ADMIN_REVOKE = 3;
 	ADMIN_EDIT = 4;
 	PIN = 5;
-}
-
-enum EDUCATION_STATUSES {
-	ALL = 0;
-	HIGH_SCHOOL = 1;
-	IN_COLLEGE = 2;
-	COLLEGE_GRAD = 3;
 }
 
 enum EMAIL_STATE {
@@ -7125,6 +7029,7 @@ enum ENGAGEMENT_CARD_VARIANT {
 	MIMICRY_UPDATES_TAB = 5;
 	AD4AD_BOOST_POPULAR_ALL_STATUSES = 6;
 	CHANNEL_PROMO = 7;
+	STICKERS = 8;
 }
 
 enum ENTRY_POINT {
@@ -7340,11 +7245,6 @@ message EmbeddedMusic {
 	optional int64 overlapDurationInMs = 14;
 }
 
-enum Encoding {
-	UTF8_BYTES = 1;
-	UTF16_STRING = 2;
-}
-
 message EncryptedPairingRequest {
 	optional bytes encryptedPayload = 1;
 	optional bytes iv = 2;
@@ -7526,24 +7426,6 @@ enum FORWARD_PICKER_ORIGIN {
 	PTT_WIDGET = 2;
 }
 
-enum FUTURE_PROOF_BEHAVIOR {
-	PLACEHOLDER = 0;
-	NO_PLACEHOLDER = 1;
-	IGNORE = 2;
-}
-
-enum FeatureLimitType {
-	ALL = 1;
-	COMMENTING = 4;
-	ENTITY_CREATION = 8;
-	ENTITY_JOINING = 16;
-	MESSAGING = 256;
-	POSTING = 2;
-	REACTING = 64;
-	RESHARING = 128;
-	VIEWING_MEMBER_LIST = 32;
-}
-
 message Field {
 	optional uint32 minVersion = 1;
 	optional uint32 maxVersion = 2;
@@ -7660,12 +7542,6 @@ enum GENAI_EXIT_POINT {
 	FULL_SHEET_DIRECT_TO_SETTING = 14;
 	EXIT_MM_SURFACE = 15;
 	COMPOSER_TRANSITION = 16;
-}
-
-enum GENDERS {
-	ALL = 0;
-	MEN = 1;
-	WOMEN = 2;
 }
 
 enum GIF_SEARCH_PROVIDER {
@@ -7838,6 +7714,10 @@ enum GROUP_HISTORY_SENDER_ACTION_TYPE {
 	GROUP_HISTORY_SPEED_BUMP_DIALOG_DISPLAYED = 26;
 	GROUP_HISTORY_SPEED_BUMP_DIALOG_CONTINUED = 27;
 	GROUP_HISTORY_SPEED_BUMP_DIALOG_CANCELED = 28;
+	GROUP_HISTORY_ADMIN_DEFAULT_ON_PROMOTION_DISPLAYED = 29;
+	GROUP_HISTORY_ADMIN_DEFAULT_ON_PROMOTION_CONFIRMED = 30;
+	GROUP_HISTORY_ADMIN_DEFAULT_ON_PROMOTION_DISMISSED = 31;
+	GROUP_HISTORY_TOGGLE_MODE_MD_SYNC_RECEIVED = 32;
 }
 
 enum GROUP_HISTORY_SYSTEM_MESSAGE_TYPE {
@@ -7847,6 +7727,12 @@ enum GROUP_HISTORY_SYSTEM_MESSAGE_TYPE {
 	INVITE_ACCEPT = 3;
 	INVITE_AUTO_ADD = 4;
 	UNKNOWN = 5;
+}
+
+enum GROUP_HISTORY_TOGGLE_MODE {
+	DEFAULT = 0;
+	ON = 1;
+	OFF = 2;
 }
 
 enum GROUP_INFO_SETTING_TYPE {
@@ -8087,11 +7973,6 @@ message GlobalSettings {
 	optional NotificationSettings groupNotificationSettings = 18;
 	optional ChatLockSettings chatLockSettings = 19;
 	optional int64 chatDbLidMigrationTimestamp = 20;
-}
-
-enum GradientType {
-	Linear = 0;
-	Radial = 1;
 }
 
 enum GraphQLErrorCode {
@@ -8524,6 +8405,13 @@ enum IMAGINE_ACTION {
 	SAVE_BUTTON_CLICKED = 103;
 	REPORT_BUTTON_CLICKED = 104;
 	REPORT_SUBMITTED = 105;
+	PRESETS_BOTTOMSHEET_OPEN = 106;
+	PRESETS_PREVIEW_LOADED = 107;
+	PRESET_SELECTED = 108;
+	IMAGINE_QUOTA_BLOCKED_VIEW = 109;
+	SUGGESTED_EDIT_PILLS_VIEWED = 110;
+	SUGGESTED_EDIT_PILL_CLICKED = 111;
+	SUGGESTED_EDIT_PROMPT_SEND = 112;
 }
 
 enum IMAGINE_ACTION_SOURCE {
@@ -8556,6 +8444,8 @@ enum IMAGINE_ACTION_SOURCE {
 	AI_FAB_QP = 26;
 	AI_TAB_QP = 27;
 	NONE = 28;
+	PRESETS = 29;
+	SUGGESTED_EDIT_PROMPT = 30;
 }
 
 enum IMAGINE_ACTION_SOURCE_SUBTYPE {
@@ -8574,6 +8464,8 @@ enum IMAGINE_ACTION_TARGET {
 	MEDIA_SHARING_STYLES = 7;
 	MEDIA_SHARING_INTENTS = 8;
 	MEDIA_SHARING_FILTERS = 9;
+	MEDIA_SHARING_PRESETS = 10;
+	SUGGESTED_EDIT_PROMPT = 11;
 }
 
 enum IMAGINE_ACTION_THREAD_TYPE {
@@ -8585,6 +8477,11 @@ enum IMAGINE_ACTION_THREAD_TYPE {
 	TO_UGC = 6;
 	STATUS = 7;
 	AR_SURFACE = 8;
+}
+
+enum IMAGINE_BLOCK_REASON {
+	QUOTA_CACHE = 1;
+	QUOTA_SERVER = 2;
 }
 
 enum IMAGINE_MEDIA_TYPE {
@@ -8822,6 +8719,7 @@ enum INTERACTION_TYPE {
 	PIX_INVITE_SHARE_KEY = 105;
 	CLICK_BUY_ON_WHATSAPP_TILE = 106;
 	AUTOMATIC_START = 107;
+	OFFSITE_CARD_PAY = 108;
 }
 
 enum INVISIBLE_MESSAGE_CATEGORY_TYPE {
@@ -8966,6 +8864,16 @@ enum JID_DOMAIN_TYPE {
 	NONE_US = 12;
 	ERROR_US = 13;
 	NONE = 14;
+}
+
+enum KEY_ENTRY_ERROR_TYPE {
+	INVALID_LENGTH = 1;
+	INVALID_FORMAT = 2;
+	WRONG_KEY = 3;
+	REQUESTOR_RATE_LIMITED = 4;
+	REQUESTEE_RATE_LIMITED = 5;
+	NO_INTERNET = 6;
+	SERVER_ERROR = 7;
 }
 
 enum KIC_ACTION_NAME_TYPE {
@@ -9192,6 +9100,7 @@ enum LIST_ACTION {
 	UNHIDE = 9;
 	REORDER = 10;
 	BUCKET_MIGRATION_DONE = 11;
+	MENTIONS_AND_REPLIES_CACHE_BUILD = 12;
 }
 
 enum LIST_TYPE {
@@ -9206,6 +9115,7 @@ enum LIST_TYPE {
 	DRAFTS = 8;
 	CAMPAIGN_REPLIES = 9;
 	SERVER_ASSIGNED = 10;
+	TO_YOU = 11;
 }
 
 enum LIST_UPDATE_USER_JOURNEY_ACTION {
@@ -9217,6 +9127,7 @@ enum LIST_UPDATE_USER_JOURNEY_ACTION {
 	LIST_ITEM_TAP = 5;
 	CREATE_LIST_TAP = 6;
 	EDIT_TAP = 7;
+	FILTER_APPLIED = 8;
 }
 
 enum LOAD_PRIORITY {
@@ -9388,6 +9299,7 @@ enum LWI_ADS_CONTENT_TYPE {
 	LWI_ADS_CONTENT_TYPE_PREVIOUS_ADS = 15;
 	LWI_ADS_CONTENT_TYPE_FB_MEDIA = 16;
 	LWI_ADS_CONTENT_TYPE_IG_MEDIA = 17;
+	LWI_ADS_CONTENT_TYPE_SENT_MEDIA = 18;
 }
 
 enum LWI_ADS_IDENTITY_TYPE {
@@ -10145,6 +10057,24 @@ enum LWI_SCREEN_ACTION {
 	LWI_ACTION_WINBACK_RECREATE_FLOW_STARTED = 541;
 	LWI_ACTION_LINKING_UPSELL_CHOOSE_OTHER_MEDIA_TAPPED = 542;
 	LWI_ACTION_WINBACK_AD_CREATION_PAC_CREATE_NEW_AD_CLICK = 543;
+	LWI_ACTION_PAC_FUNDING_REACHED_ASL_RESET_BOTTOMSHEET_IMPRESSION = 544;
+	LWI_ACTION_PAC_FUNDING_REACHED_ASL_RESET_CTA_CLICK = 545;
+	LWI_ACTION_PAC_FUNDING_REACHED_ASL_RESET_DISMISS = 546;
+	LWI_ACTION_PAC_FUNDING_REACHED_ASL_RESET_SUCCESS = 547;
+	LWI_ACTION_PAC_FUNDING_REACHED_ASL_RESET_FAILURE = 548;
+	LWI_ACTION_PAC_FUNDING_PROSPECTIVE_ASL_RESET_BOTTOMSHEET_IMPRESSION = 549;
+	LWI_ACTION_PAC_FUNDING_PROSPECTIVE_ASL_RESET_CTA_CLICK = 550;
+	LWI_ACTION_PAC_FUNDING_PROSPECTIVE_ASL_RESET_DISMISS = 551;
+	LWI_ACTION_PAC_FUNDING_PROSPECTIVE_ASL_RESET_SUCCESS = 552;
+	LWI_ACTION_PAC_FUNDING_PROSPECTIVE_ASL_RESET_FAILURE = 553;
+	LWI_ACTION_PAC_FUNDING_PROSPECTIVE_ASL_INCREASE_BOTTOMSHEET_IMPRESSION = 554;
+	LWI_ACTION_PAC_FUNDING_PROSPECTIVE_ASL_INCREASE_CTA_CLICK = 555;
+	LWI_ACTION_PAC_FUNDING_PROSPECTIVE_ASL_INCREASE_DISMISS = 556;
+	LWI_ACTION_PAC_FUNDING_PROSPECTIVE_ASL_INCREASE_SUCCESS = 557;
+	LWI_ACTION_PAC_FUNDING_PROSPECTIVE_ASL_INCREASE_FAILURE = 558;
+	LWI_ACTION_PAC_FUNDING_PREPAY_LOW_FUNDS_ADD_FUNDS_BOTTOMSHEET_IMPRESSION = 559;
+	LWI_ACTION_PAC_FUNDING_PREPAY_LOW_FUNDS_ADD_FUNDS_CTA_CLICK = 560;
+	LWI_ACTION_PAC_FUNDING_PREPAY_LOW_FUNDS_ADD_FUNDS_DISMISS = 561;
 }
 
 enum LWI_SCREEN_REFERENCE {
@@ -10265,6 +10195,7 @@ enum LWI_SCREEN_REFERENCE {
 	LWI_SCREEN_NATIVE_PAST_ADS_NUDGE = 115;
 	LWI_SCREEN_FB_LINKING_UPSELL = 116;
 	LWI_SCREEN_IG_LINKING_UPSELL = 117;
+	LWI_SCREEN_MEDIA_PICKER_SENT_MEDIA = 118;
 }
 
 enum LWI_SUB_ENTRY_POINT {
@@ -10405,18 +10336,6 @@ enum MARKERS {
 	APP15 = 239;
 	COM = 254;
 	TEM = 1;
-}
-
-enum MAX_LIMIT {
-	client_init = 100;
-	client_sync = 50;
-	client_task = 20;
-	db_dump = 200;
-	db_init = 100;
-	general = 50;
-	ls = 50;
-	maw_setup = 10;
-	user_experience = 200;
 }
 
 enum MD_APP_STATE_KEY_ROTATION_REASON_CODE {
@@ -10864,6 +10783,8 @@ enum MEDIA_PICKER_ORIGIN_TYPE {
 	CONTACTS_TAB = 132;
 	GROUP_STATUS_REPLY_WITH_STATUS = 133;
 	STATUS_PRIVACY_SETTINGS = 134;
+	BIZ_AI_CHECKOUT_SUGGESTION = 135;
+	ME_TAB = 136;
 }
 
 enum MEDIA_QUALITY {
@@ -11021,10 +10942,6 @@ enum MEDIA_UPLOAD_RESULT_TYPE {
 	ERROR_WAMSYS = 40;
 	ERROR_INVALID_URL = 41;
 	INTEGRITY_CHECK_FAILURE = 42;
-}
-
-enum MENTION_MENTION_TYPE {
-	PROFILE = 0;
 }
 
 enum MENTION_TYPE {
@@ -11259,6 +11176,7 @@ enum META_AI_ACTION_ENTRY_POINT {
 	CHAT_LIST = 4;
 	NAVIGATION_BAR_BUTTON = 5;
 	CONTINUE_CHAT_MODULE = 6;
+	THREAD_INFO_PAGE = 7;
 }
 
 enum META_AI_MODEL_TIER_TYPE {
@@ -11749,6 +11667,7 @@ enum MUTE_CHAT_TYPE {
 	CHANNEL = 3;
 	INTEROP = 4;
 	INORGANIC_NOTIFICATION = 5;
+	META_AI = 6;
 }
 
 enum MUTE_ENTRY_POINT {
@@ -11761,6 +11680,7 @@ enum MUTE_ENTRY_POINT {
 	LIST_BASED_MUTE = 7;
 	APPLE_WATCH_PROFILE = 8;
 	APPLE_WATCH_CHATLIST = 9;
+	META_AI_SETTINGS = 10;
 }
 
 enum MUTE_ORIGIN {
@@ -11853,13 +11773,6 @@ enum MediaVisibility {
 message MemberLabel {
 	optional string label = 1;
 	optional int64 labelTimestamp = 2;
-}
-
-message Mention {
-	optional MENTION_MENTION_TYPE mentionType = 1;
-	optional string mentionedJid = 2;
-	optional uint32 offset = 3;
-	optional uint32 length = 4;
 }
 
 message Message {
@@ -13955,13 +13868,6 @@ message MessageSecretMessage {
 	optional bytes encPayload = 3;
 }
 
-message MessageText {
-	optional string text = 1;
-	repeated string mentionedJid = 2;
-	repeated Command commands = 3;
-	repeated Mention mentions = 4;
-}
-
 message Money {
 	optional int64 value = 1;
 	optional uint32 offset = 2;
@@ -14349,6 +14255,7 @@ enum NOTIFICATION_TYPE_ENUM {
 	EVENT_V2_SUSPENDED = 71;
 	STATUS_GROUP_STATUS_REPLY = 72;
 	STICKER_ANNOTATION = 73;
+	CHANNEL_QUESTION_RESPONSE_LIKED = 74;
 }
 
 enum NS_MODE {
@@ -15087,6 +14994,7 @@ enum PAYMENTS_REQUEST_NAME_TYPE {
 	GET_P2M_CONFIG = 66;
 	GET_UPI_LITE_DETAILS = 67;
 	GET_SMS_CONTENT_AND_VMN = 68;
+	ENROLL_UPI_INCENTIVE = 69;
 }
 
 enum PAYMENTS_RESPONSE_RESULT_TYPE {
@@ -15504,6 +15412,7 @@ enum PAYMENT_ACTION_TARGETS {
 	SEND_PIX_KEY = 389;
 	GO_TO_PAYMENTS = 390;
 	SPLIT_PAYMENT = 391;
+	COPY_PIX_KEY = 392;
 }
 
 enum PAYMENT_ACTION_TYPES {
@@ -15847,6 +15756,11 @@ enum PQ_FALLBACK_REASON {
 	UNKNOWN = 0;
 	PQ_NO_SESSION_REGULAR_FALLBACK = 1;
 	PQ_SESSION_DELETED_KEYLESS_RETRY = 2;
+}
+
+enum PQ_RECEIVE_GATE_STATE {
+	UPLOAD_UNCONFIRMED_LOCAL_KEY_PRESENT = 1;
+	UPLOAD_UNCONFIRMED_LOCAL_KEY_MISSING = 2;
 }
 
 enum PRECISE_SIZE_BUCKET {
@@ -16575,24 +16489,6 @@ message PairingRequest {
 	optional bytes advSecret = 3;
 }
 
-enum PasskeyErrorCodes {
-	NOT_ALLOWED_ERROR = 0;
-	CONSTRAINT_ERROR = 1;
-	INVALID_STATE_ERROR = 2;
-	NOT_SUPPORTED_ERROR = 3;
-	SECURITY_ERROR = 4;
-	ABORT_ERROR = 5;
-	UNKNOWN_ERROR = 6;
-}
-
-enum PasskeyErrorType {
-	USER_CANCELLED_REAUTH_ERROR = 0;
-	USER_CANCELLED_OS_DIALOG_ERROR = 1;
-	UNSUPPORTED_PASSWORD_MANAGER_ERROR = 2;
-	UNSUPPORTED_USER_AGENT_ERROR = 3;
-	UNKNOWN_ERROR = 4;
-}
-
 message PastParticipant {
 	enum LeaveReason {
 		LEFT = 0;
@@ -16759,11 +16655,6 @@ enum PaymentTransactionType {
 	TYPE_DEPOSIT = 500;
 	TYPE_REFUND = 600;
 	TYPE_WITHDRAWAL = 700;
-}
-
-enum PcaUGroupIndex {
-	DYNAMIC_GROUP_INDEX = 0;
-	STATIC_GROUP_INDEX = 1;
 }
 
 enum PendingReadReceiptType {
@@ -17484,6 +17375,8 @@ enum REACTION_USER_JOURNEY_ACTION {
 	DETAILS_DISMISS = 10;
 	SELECT_ALBUM_THUMBNAIL = 11;
 	SELECT_TAB_IN_REACTION_DETAILS = 12;
+	STICKER_REACTION_OPEN = 13;
+	STICKER_REACTION_SELECT = 14;
 }
 
 enum REACTION_USER_JOURNEY_ENTRY_POINT {
@@ -17574,6 +17467,8 @@ enum REPORTING_TOKEN_VALIDATION_FAILURE_REASON {
 	MISMATCH_REPORTING_TOKEN = 2;
 	UNSUPPORTED_VERSION = 3;
 	GROUP_HISTORY_MESSAGE_MISSING_FROM_PUBLIC_STANZA = 4;
+	MISSING_REPORTING_TOKEN = 5;
+	MISSING_REPORTING_TOKEN_SECRET = 6;
 }
 
 enum REPORTING_TOKEN_VERSION {
@@ -17587,12 +17482,6 @@ enum REPORT_TO_ADMIN_INTERACTION {
 	CLICK_SEND_FOR_ADMIN_REVIEW = 1;
 	CLICK_CONFIRM_SEND_FOR_ADMIN_REVIEW = 2;
 	CLICK_CANCEL_SEND_FOR_ADMIN_REVIEW = 3;
-}
-
-enum RESET_PAGE_IDS {
-	ad_page_id = 0;
-	adset_page_id = 0;
-	campaign_page_id = 0;
 }
 
 enum RESHARE_SOURCE {
@@ -18275,6 +18164,7 @@ enum SIGNUP_ENTRY_POINT {
 	EXTERNAL = 6;
 	MESSENGER = 7;
 	THREADS = 8;
+	CTWA_THREAD = 9;
 }
 
 enum SIGNUP_USER_JOURNEY_OPERATION {
@@ -18305,6 +18195,10 @@ enum SIGNUP_USER_JOURNEY_OPERATION {
 	SIGNUP_CONFIRMATION_BOTTOMSHEET_EXTERNAL_NAVIGATION = 24;
 	SIGNUP_CONFIRMATION_BOTTOMSHEET_CLOSED = 25;
 	SIGNUP_CONFIRMATION_WEBSITE_CTA_CLICKED = 26;
+	AGM_RECEIVED = 27;
+	SIGNUP_REQUEST_FAILED = 28;
+	SIGNUP_CONFIRMATION_PARSE_FAILURE = 29;
+	SIGNUP_CONFIRMATION_NOT_RECEIVED = 30;
 }
 
 enum SIGN_CREDENTIAL_RESULT {
@@ -18313,11 +18207,6 @@ enum SIGN_CREDENTIAL_RESULT {
 	ERROR_SERVER = 3;
 	ERROR_OTHER = 4;
 	ERROR_CLIENT_NETWORK = 5;
-}
-
-enum SIZE {
-	WIDE = 555;
-	STANDARD = 445;
 }
 
 enum SIZE_BUCKET {
@@ -18482,11 +18371,6 @@ enum SP_SIGNAL_NOT_SHARED_REASON {
 	INVALID_URL = 4;
 }
 
-enum STAGE_CHROME {
-	x = 82;
-	y = 42;
-}
-
 enum STAGE_FAILURE_REASON_ENUM {
 	MALFORMED_PEER_MESSAGE = 1;
 	INITIATED_LOGOUT_BASED_ON_MAPPING = 2;
@@ -18495,11 +18379,6 @@ enum STAGE_FAILURE_REASON_ENUM {
 	COMPANION_UNSUPPORTED_VERSION = 5;
 	INTERNAL_ERROR = 6;
 	COMPANION_TIMEOUT_BASED_ON_DEVICE_CAPABILITY = 7;
-}
-
-enum STAGE_NORMAL_MAX {
-	x = 960;
-	y = 960;
 }
 
 enum STANZA_TYPE {
@@ -19829,13 +19708,7 @@ enum SURFACE_TYPE {
 	GEN_AI_AI_HUB_MANAGE_CLABE_ACCOUNT = 338;
 	GEN_AI_AI_HUB_LIST_CLABE_ACCOUNTS = 339;
 	GEN_AI_AGENT_SMART_COMPOSER_REPLY_CARD = 340;
-}
-
-enum SV_LOG_LEVEL {
-	DEBUG = 4;
-	INFO = 3;
-	WARN = 2;
-	ERROR = 1;
+	BIZ_PROFILE_IMPORT_RECAP = 341;
 }
 
 enum SW_AEC_TYPE {
@@ -20316,29 +20189,6 @@ enum StreamStatus {
 	STARTED = 3;
 	STOPPED = 4;
 	CLOSED = 5;
-}
-
-enum StreamType {
-	Unknown = 0;
-	Default = 1;
-	ScreenShare = 2;
-}
-
-enum StrokeLineCap {
-	Butt = 0;
-	Round = 1;
-	Square = 2;
-}
-
-enum StrokeLineJoin {
-	Miter = 0;
-	Round = 1;
-	Bevel = 2;
-}
-
-message SubProtocol {
-	optional bytes payload = 1;
-	optional int32 version = 2;
 }
 
 message SyncActionData {
@@ -21364,6 +21214,13 @@ enum THREAD_ACTION_TYPES {
 	SEARCH_RESULT_SHOWN = 14;
 	AI_HOME_IMPRESSION = 15;
 	CLICK_CONTINUE_CHAT_MODULE = 16;
+	CREATION_SHEET_SHOWN = 17;
+	THREAD_PHOTO_CHANGED = 18;
+	THREAD_CREATE_REQUEST = 19;
+	THREAD_CREATE_RESPONSE = 20;
+	GREETING_RECEIVED = 21;
+	CLICK_CHAT_INFO = 22;
+	CREATION_SHEET_DISMISSED = 23;
 }
 
 enum THREAD_CREATION_TIME {
@@ -21442,15 +21299,6 @@ enum TRUST_SIGNAL_BUCKETS {
 	B10K = 9;
 	B100K = 10;
 	B1M = 11;
-}
-
-enum TSLOG_METRIC_SCALE {
-	audioLevel = 10000;
-	jitter = 1000;
-	totalAudioEnergy = 10000;
-	totalDecodeTime = 1000;
-	totalEncodeTime = 1000;
-	totalSamplesDuration = 1000;
 }
 
 enum TS_EXTERNAL_EVENT_SOURCE {
@@ -21732,6 +21580,7 @@ enum TS_SURFACE {
 	MEMBERSHIP_APPROVAL_REQUESTS = 269;
 	ADD_CONTACT_TO_GROUPS_PICKER = 270;
 	CTWA_MIDSTAGE_COMPOSER = 271;
+	LEAD_GEN = 272;
 }
 
 enum TYPE {
@@ -21820,19 +21669,6 @@ message TemplateButton {
 	}
 }
 
-enum TextWeight {
-	Thin = 0;
-	UltraLight = 1;
-	Light = 2;
-	Book = 3;
-	Medium = 4;
-	SemiBold = 5;
-	Bold = 6;
-	UltraBold = 7;
-	Heavy = 8;
-	UltraHeavy = 9;
-}
-
 enum ThemesSettingValue {
 	SystemDefault = 0;
 	Light = 1;
@@ -21854,18 +21690,6 @@ enum TimeFormatSource {
 	DeviceTimeFormat = 2;
 	PhoneTimeFormat = 1;
 	LocaleTimeFormat = 0;
-}
-
-enum TrackMatteType {
-	None = 0;
-	Alpha = 1;
-	Alpha_Inverted = 2;
-}
-
-enum TweenType {
-	Bezier = 0;
-	Linear = 1;
-	Hold = 2;
 }
 
 enum UFAD_REPORT_TYPE {
@@ -22470,116 +22294,6 @@ enum VERIFIED_LEVEL {
 	HIGH = 2;
 }
 
-enum VERSION {
-	V21 = 21;
-	V22 = 22;
-	V23 = 23;
-	V24 = 24;
-	V25 = 25;
-	V26 = 26;
-	V27 = 27;
-	V28 = 28;
-	V29 = 29;
-	V30 = 30;
-	V31 = 31;
-	V32 = 32;
-	V33 = 33;
-	V34 = 34;
-	V35 = 35;
-	V36 = 36;
-	V37 = 37;
-	V38 = 38;
-	V39 = 39;
-	V40 = 40;
-	V41 = 41;
-	V42 = 42;
-	V43 = 43;
-	V44 = 44;
-	V45 = 45;
-	V46 = 46;
-	V47 = 47;
-	V48 = 48;
-	V49 = 49;
-	V50 = 50;
-	V51 = 51;
-	V52 = 52;
-	V53 = 53;
-	V54 = 54;
-	V55 = 55;
-	V56 = 56;
-	V57 = 57;
-	V58 = 58;
-	V59 = 59;
-	V60 = 60;
-	V61 = 61;
-	V62 = 62;
-	V63 = 63;
-	V64 = 64;
-	V65 = 65;
-	V66 = 66;
-	V67 = 67;
-	V68 = 68;
-	V69 = 69;
-	V70 = 70;
-	V71 = 71;
-	V72 = 72;
-	V73 = 73;
-	V74 = 74;
-	V75 = 75;
-	V76 = 76;
-	V77 = 77;
-	V78 = 78;
-	V79 = 79;
-	V80 = 80;
-	V81 = 81;
-	V82 = 82;
-	V83 = 83;
-	V84 = 84;
-	V85 = 85;
-	V86 = 86;
-	V87 = 87;
-	V88 = 88;
-	V89 = 89;
-	V90 = 90;
-	V91 = 91;
-	V92 = 92;
-	V93 = 93;
-	V94 = 94;
-	V95 = 95;
-	V96 = 96;
-	V97 = 97;
-	V98 = 98;
-	V99 = 99;
-	V100 = 100;
-	V101 = 101;
-	V102 = 102;
-	V103 = 103;
-	V104 = 104;
-	V105 = 105;
-	V106 = 106;
-	V107 = 107;
-	V108 = 108;
-	V109 = 109;
-	V110 = 110;
-	V111 = 111;
-	V112 = 112;
-	V113 = 113;
-	V114 = 114;
-	V115 = 115;
-	V116 = 116;
-	V117 = 117;
-	V118 = 118;
-	V119 = 119;
-	V120 = 120;
-	V121 = 121;
-	V122 = 122;
-	V123 = 123;
-	V124 = 124;
-	V125 = 125;
-	V126 = 126;
-	V127 = 127;
-}
-
 enum VIDEO_PLAY_ORIGIN {
 	CONVERSATION = 1;
 	GALLERY_PICKER = 2;
@@ -22691,21 +22405,6 @@ enum VO_SS_ACTION {
 	SCREEN_RECORDING_BLOCKED = 13;
 	SCREEN_RECORDING_STARTED = 14;
 	PLACEHOLDER_MESSAGE_LEARN_MORE_TAP = 15;
-}
-
-enum ValueRulesModalEntryPoint {
-	ADVERTISING_SETTINGS = 0;
-	L2_CONVERSION_LOCATION = 1;
-	L2_GLOBAL = 2;
-	L2_PLACEMENT = 3;
-	L2_NCA_GOAL = 4;
-	L2_AUDIENCE = 5;
-	L2_BROAD_GOAL = 6;
-}
-
-enum VectorCompositeOrder {
-	FillStroke = 0;
-	StrokeFill = 1;
 }
 
 message VerifiedNameCertificate {
@@ -23413,6 +23112,8 @@ enum WPBUJ_SOURCE {
 	CHAT_LIST_FIX_ENCRYPTION_BANNER = 9;
 	REGISTRATION_RESTORE_SETUP = 10;
 	CHAT_LIST_BACKUP_SETUP_PROMPT = 11;
+	META_SUBS_DEEPLINK = 12;
+	THIRD_PARTY_MANAGE_STORAGE_BOTTOM_SHEET = 13;
 }
 
 enum WPBUJ_SURFACE {
@@ -23487,6 +23188,14 @@ enum WSUA_ACTION_TARGET {
 	EDIT_DEFAULT_REACTIONS = 41;
 	DEFAULT_REACTION_SLOT = 42;
 	RESET_DEFAULT_REACTIONS = 43;
+	TURN_ON_BACKUP = 44;
+	GHOST_BADGE = 45;
+	GET_VERIFIED = 46;
+}
+
+enum WSUA_BLOCK_SOURCE {
+	CACHE = 1;
+	SERVER = 2;
 }
 
 enum WSUA_PRODUCT_TYPE {
@@ -23614,6 +23323,25 @@ enum WSUA_SCREEN {
 	META_SUBS_PRO_ACQ_WA_EMAIL = 73;
 	META_SUBS_PRO_WABIZAI_EMAIL = 74;
 	META_SUBS_PRO_WABIZAI_FBADS = 75;
+	NCT_FIRST_WARNING = 76;
+	NCT_SECOND_WARNING = 77;
+	NCT_LIMIT_REACHED = 78;
+	NCT_HOME = 79;
+	BACKUP_SETTINGS_PROVIDER_SELECTION = 80;
+	BACKUP_NUX_PROVIDER_SELECTION = 81;
+	CHAT_BACKUP_BOTTOMSHEET = 82;
+	SMART_COMPOSER_SELECTOR = 83;
+	AI_REPLY = 84;
+	META_SUBS_PRO_MSGRBIZAI_EMAIL = 85;
+	META_SUBS_PRO_MSGRBIZAI_AYMT = 86;
+	META_SUBS_PRO_MSGRBIZAI_FBADS = 87;
+	META_SUBS_PRO_WEB = 88;
+	META_SUBS_PRO_SEM_WEB = 89;
+	CHAT_BACKUP_SETTINGS = 90;
+	WAPLUS_CONSUMER_SEM_WEB = 91;
+	CONSUMER_SUBS_PAYMENT_ABANDONMENT_NOTIF = 92;
+	BIZ_SUB_VERIFICATION_ELIGIBLE_NOTIFICATION = 93;
+	BIZ_SUB_VERIFICATION_ELIGIBLE_BUSINESS_ALERT = 94;
 }
 
 enum WSUA_SCREEN_ELEMENT {
@@ -23652,22 +23380,17 @@ enum WSUA_SCREEN_ELEMENT {
 	BIZ_AI_META_ONE_ENTRYPOINT = 33;
 	CUSTOM_REACTIONS_LIST_ITEM = 34;
 	EDIT_DEFAULT_REACTIONS = 35;
+	WA_STORAGE = 36;
+	STORAGE_LIMIT_WARNING = 37;
+	STORAGE_LIMIT_REACHED = 38;
+	THIRD_PARTY_UPSELL = 39;
+	GHOST_BADGE = 40;
 }
 
 enum WSUA_TIER {
 	TIER_1 = 1;
 	TIER_2 = 2;
 	TIER_3 = 3;
-}
-
-enum WWW_QPL_END_ACTION {
-	START = 1;
-	SUCCESS = 2;
-	FAIL = 3;
-	CANCEL = 4;
-	TIMEOUT = 113;
-	OFFLINE = 160;
-	ERROR = 87;
 }
 
 enum WaitingRoomFilter {
@@ -24135,155 +23858,14 @@ enum XMPP_STATUS {
 	UNKNOWN = 4;
 }
 
-enum ZenonDismissReason {
-	IgnoreCall = 0;
-	HangupCall = 1;
-	InAnotherCall = 2;
-	AcceptAfterHangUp = 3;
-	NoAnswerTimeout = 4;
-	IncomingTimeout = 5;
-	OtherInstanceHandled = 6;
-	SignalingMessageFailed = 7;
-	ConnectionDropped = 8;
-	ClientInterrupted = 9;
-	WebRTCError = 10;
-	ClientError = 11;
-	NoPermission = 12;
-	OtherNotCapable = 13;
-	NoUIShown = 14;
-	VersionUnsupported = 15;
-	CallerNotVisible = 16;
-	CarrierBlocked = 17;
-	OtherCarrierBlocked = 18;
-	ClientEncryptionError = 19;
-	MicrophonePermissionDenied = 20;
-	CameraPermissionDenied = 21;
-	SessionMigrated = 22;
-	RingMuted = 23;
-	JoinApprovalDenied = 24;
-	RejectedByCallee = 25;
-	CallEndedByProduct = 26;
-	CallEnded = 27;
-	AnsweredOnAnotherDevice = 28;
-	RejectedOnAnotherDevice = 29;
-	CallCollision = 30;
-	MaxAllowedParticipantsReached = 31;
-	UnexpectedEndOfCall = 32;
-	TxAckTimeout = 33;
-	EndToEndEncryptionInvariantViolated = 34;
-	ProductServerDefinedEndReason = 35;
-	RemovedByParticipant = 39;
-	AnsweredByOtherUser = 40;
-	CallerHasAppealableCallingRestriction = 41;
-}
-
-enum ZenonDuplicatedParticipantsProcessingMode {
-	KEEP_ALL_PARTICIPANTS = 0;
-	REMOVE_DUPLICATED = 1;
-	DISCONNECT_DUPLICATED = 2;
-}
-
-enum ZenonMWTrackLabel {
-	DEFAULT_AUDIO = 0;
-	DEFAULT_VIDEO = 1;
-	SCREEN_AUDIO = 2;
-	SCREEN_VIDEO = 3;
-}
-
-enum ZenonNetworkQuality {
-	Excellent = 4;
-	Good = 3;
-	Fair = 2;
-	Poor = 1;
-	Disconnected = 0;
-}
-
-enum ZenonParticipantState {
-	UNKNOWN = 0;
-	ADDING = 1;
-	CONTACTING = 2;
-	RINGING = 3;
-	ACCEPTING = 4;
-	PRECONNECTING = 5;
-	CONNECTING = 6;
-	CONNECTED = 7;
-	REMOVING = 8;
-	DISCONNECTED = 9;
-	NO_ANSWER = 10;
-	REJECTED = 11;
-	UNREACHABLE = 12;
-	CONNECTION_DROPPED = 13;
-	PARTICIPANT_LIMIT_REACHED = 14;
-	IN_ANOTHER_CALL = 15;
-	RING_TYPE_UNSUPPORTED = 16;
-	PENDING_APPROVAL = 17;
-	APPROVING = 18;
-	DENYING = 19;
-	APPROVED = 20;
-	FAILED_APPROVAL = 21;
-	HANGUP_IN_WAITING_ROOM = 22;
-	RECONNECTING = 23;
-}
-
-enum ZenonSignalingStatusCode {
-	OK = 0;
-	REJECTED_FROM_VERSION_DOES_NOT_MATCH = 1;
-	METHOD_NOT_ALLOWED = 2;
-}
-
-enum ZenonSignalingStatusSubCode {
-	CLIENT_TERMINATED = 0;
-}
-
-enum afterIDs {
-	PROFILING_COUNTERS = 0;
-	HEARTBEAT = 1;
-	FLUX_PERF_TOOL = 2;
-}
-
-enum beforeIDs {
-	PROFILING_COUNTERS = 0;
-	HEARTBEAT = 1;
-	FLUX_PERF_TOOL = 2;
-}
-
 enum default {
-	UNKNOWN = 1;
-	DISMISSED = 2;
-	REJECTED = 3;
-	APPROVED = 4;
-}
-
-enum defaultOrder {
-	EXTENDED_CREDIT = 1;
-	CREDIT_CARD = 2;
-	NEW_CREDIT_CARD = 3;
-	BM_OPTION = 4;
-	PAYPAL_BA = 5;
-	NEW_PAYPAL_BA = 6;
-	DIRECT_DEBIT = 7;
-	NEW_DIRECT_DEBIT = 8;
-	ALT_PAY = 9;
-	FB_TOKEN = 98;
-	DUMMY = 99;
+	STATIC = 0;
+	DYNAMIC = 1;
+	BIOMETRIC = 2;
 }
 
 enum defaultProps {
 	forceResetErrorCount = 0;
-}
-
-enum directDebitFirstOrder {
-	DIRECT_DEBIT = 1;
-	EXTENDED_CREDIT = 2;
-	CREDIT_CARD = 3;
-	NEW_CREDIT_CARD = 4;
-	BM_OPTION = 5;
-	PAYPAL_BA = 6;
-	NEW_PAYPAL_BA = 7;
-	NEW_DIRECT_DEBIT = 8;
-	ALT_PAY = 9;
-	FB_TOKEN = 98;
-	DUMMY = 99;
 }
 
 enum dynamicTypography {
@@ -24306,10 +23888,6 @@ enum exports {
 	UNKNOWN_SINGULAR = 7;
 }
 
-enum id {
-	contents = 0;
-}
-
 enum internalDefaults {
 	version = 1;
 }
@@ -24325,10 +23903,5 @@ enum qplActionMap {
 	START = 1;
 	SUCCESS = 2;
 	TIMEOUT = 113;
-}
-
-enum wholeYearRangeInYears {
-	since = -271820;
-	until = 275760;
 }
 
