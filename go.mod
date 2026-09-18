@@ -1,4 +1,4 @@
-module github.com/Thruqe/wa-proto
+module github.com/thruqe/WAProto
 
 go 1.27.1
 

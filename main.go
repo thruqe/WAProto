@@ -9,13 +9,13 @@ import (
 	"sort"
 	"time"
 
-	"github.com/Thruqe/wa-proto/pkg/ast"
-	"github.com/Thruqe/wa-proto/pkg/compiler"
-	"github.com/Thruqe/wa-proto/pkg/corrector"
-	"github.com/Thruqe/wa-proto/pkg/extractor"
-	"github.com/Thruqe/wa-proto/pkg/fetcher"
-	"github.com/Thruqe/wa-proto/pkg/generator"
-	"github.com/Thruqe/wa-proto/pkg/parser"
+	"github.com/thruqe/WAProto/pkg/ast"
+	"github.com/thruqe/WAProto/pkg/compiler"
+	"github.com/thruqe/WAProto/pkg/corrector"
+	"github.com/thruqe/WAProto/pkg/extractor"
+	"github.com/thruqe/WAProto/pkg/fetcher"
+	"github.com/thruqe/WAProto/pkg/generator"
+	"github.com/thruqe/WAProto/pkg/parser"
 )
 
 const version = "1.0.0"

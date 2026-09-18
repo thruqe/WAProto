@@ -6,8 +6,8 @@ import (
 	"sort"
 	"strings"
 
-	protoAst "github.com/Thruqe/wa-proto/pkg/ast"
-	"github.com/Thruqe/wa-proto/pkg/catalog"
+	protoAst "github.com/thruqe/WAProto/pkg/ast"
+	"github.com/thruqe/WAProto/pkg/catalog"
 	"github.com/dop251/goja/ast"
 	"github.com/dop251/goja/parser"
 	"github.com/dop251/goja/token"

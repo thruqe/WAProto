@@ -3,7 +3,7 @@ package corrector
 import (
 	"strings"
 
-	"github.com/Thruqe/wa-proto/pkg/ast"
+	"github.com/thruqe/WAProto/pkg/ast"
 )
 
 // FixProto2 ensures a ProtoSchema conforms strictly to proto2 syntax with explicit field rules.

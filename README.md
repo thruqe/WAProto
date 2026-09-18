@@ -1,6 +1,6 @@
 # WhatsApp Protocol Buffers
 
-[![Build Status](https://github.com/thruqe/WAProto/actions/workflows/update-proto.yml/badge.svg)](https://github.com/Thruqe/wa-proto/actions)
+[![Build Status](https://github.com/thruqe/WAProto/actions/workflows/update-proto.yml/badge.svg)](https://github.com/thruqe/WAProto/actions)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 
 Fetch and extract live WhatsApp Web protobuf definitions and generate both monolithic schemas (`WAProto.proto`) and modular package structures.

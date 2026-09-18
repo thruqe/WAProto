@@ -4,7 +4,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/Thruqe/wa-proto/pkg/ast"
+	"github.com/thruqe/WAProto/pkg/ast"
 )
 
 func TestFixProto2_Message(t *testing.T) {

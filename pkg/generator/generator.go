@@ -12,10 +12,10 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/Thruqe/wa-proto/pkg/ast"
-	"github.com/Thruqe/wa-proto/pkg/catalog"
-	"github.com/Thruqe/wa-proto/pkg/corrector"
-	"github.com/Thruqe/wa-proto/pkg/parser"
+	"github.com/thruqe/WAProto/pkg/ast"
+	"github.com/thruqe/WAProto/pkg/catalog"
+	"github.com/thruqe/WAProto/pkg/corrector"
+	"github.com/thruqe/WAProto/pkg/parser"
 )
 
 // Report contains statistics about the generation process.

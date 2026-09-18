@@ -8,7 +8,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/Thruqe/wa-proto/pkg/ast"
+	"github.com/thruqe/WAProto/pkg/ast"
 )
 
 var (
