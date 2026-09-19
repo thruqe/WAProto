@@ -1,7 +1,7 @@
 syntax = "proto2";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1047920321
+/// WhatsApp Version: 2.3000.1047935283
 
 enum ABOUT_CONSUMPTION_SURFACE_TYPE {
 	ONE_ON_ONE_CHAT = 1;
@@ -23814,6 +23814,28 @@ enum WindowsSystemFontMetrics {
 	descent = -514;
 	lineGap = 0;
 	unitsPerEm = 2048;
+}
+
+enum WtFallbackPhase {
+	Unknown = 0;
+	PreAccept = 1;
+	PostAcceptPreActive = 2;
+	PostActive = 3;
+}
+
+enum WtFallbackReason {
+	Unknown = 0;
+	NoInboundDatagramTimeout = 1;
+	ConnectionTimeout = 2;
+	InvalidConfig = 3;
+	Aborted = 4;
+	HandshakeTimeout = 5;
+	ImmediateReject = 6;
+	SessionError = 7;
+	StreamError = 8;
+	WorkerError = 9;
+	SendOnFailedConnection = 10;
+	GroupCallDisabled = 11;
 }
 
 enum XMPP_STATUS {
