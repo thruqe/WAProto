@@ -1,7 +1,7 @@
 syntax = "proto2";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1048007721
+/// WhatsApp Version: 2.3000.1048010689
 
 enum ABOUT_CONSUMPTION_SURFACE_TYPE {
 	ONE_ON_ONE_CHAT = 1;
@@ -7867,12 +7867,6 @@ enum GROUP_TYPE_CLIENT {
 	SUB_GROUP = 2;
 	DEFAULT_SUB_GROUP = 3;
 	PARENT_GROUP = 4;
-}
-
-enum GROUP_TYPING_VARIANT {
-	NONE = 0;
-	SHOW_COUNT_ONLY = 1;
-	SHOW_NAME_AND_COUNT = 2;
 }
 
 enum GUEST_UPSELL_ACTION_TYPE {
