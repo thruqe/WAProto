@@ -1,7 +1,7 @@
 syntax = "proto2";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1048015012
+/// WhatsApp Version: 2.3000.1048024606
 
 enum ABOUT_CONSUMPTION_SURFACE_TYPE {
 	ONE_ON_ONE_CHAT = 1;
@@ -987,16 +987,6 @@ enum AddonMinimizedType {
 enum AeadID {
 	AeadAes128GcmId = 1;
 	AeadChaCha20Poly1305Id = 3;
-}
-
-enum AllowedZoomLevel {
-	ZeroEight = 0;
-	ZeroNine = 0;
-	One = 1;
-	OneOne = 1;
-	OneTwoFive = 1;
-	OneThreeFive = 1;
-	OneFive = 1;
 }
 
 enum AppleSystemFontMetrics {
