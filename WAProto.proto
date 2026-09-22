@@ -1,7 +1,7 @@
 syntax = "proto2";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1048049033
+/// WhatsApp Version: 2.3000.1048082989
 
 enum ABOUT_CONSUMPTION_SURFACE_TYPE {
 	ONE_ON_ONE_CHAT = 1;
@@ -15547,16 +15547,8 @@ enum PLATFORM_NAME {
 enum PLATFORM_TYPE {
 	IPHONE = 1;
 	ANDROID = 2;
-	BB = 3;
-	BBX = 7;
-	S40 = 4;
-	SYMBIAN = 5;
-	WP = 6;
 	WEBCLIENT = 8;
-	OSMETA = 11;
-	ENT = 12;
 	SMBA = 13;
-	KAIOS = 14;
 	SMBI = 15;
 	WINDOWS = 16;
 	WEB = 17;
@@ -15576,7 +15568,6 @@ enum PLATFORM_TYPE {
 	MSGRP = 31;
 	MSGRW = 32;
 	IGDW = 33;
-	PAGE = 34;
 	MSGRDM = 35;
 	MSGRDW = 36;
 	MSGROM = 37;
@@ -17855,6 +17846,11 @@ enum SETTINGS_CLICK_ENTRY_POINT {
 	PRIVACY_CHECKUP = 3;
 	METAB_SCREEN = 4;
 	THREE_DOT_MENU = 5;
+	METAB_GEAR = 6;
+	CHAT_LIST_OVERFLOW_MENU = 7;
+	UPDATES_TAB_OVERFLOW_MENU = 8;
+	CALLS_TAB_OVERFLOW_MENU = 9;
+	COMMUNITIES_TAB_OVERFLOW_MENU = 10;
 }
 
 enum SETTINGS_ITEM_TYPE {
@@ -23820,6 +23816,7 @@ enum WtFallbackReason {
 	WorkerError = 9;
 	SendOnFailedConnection = 10;
 	GroupCallDisabled = 11;
+	NoReadyAfterAcceptTimeout = 12;
 }
 
 enum XMPP_STATUS {
