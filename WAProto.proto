@@ -1,7 +1,7 @@
 syntax = "proto2";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1048567512
+/// WhatsApp Version: 2.3000.1048570357
 
 enum ABOUT_CONSUMPTION_SURFACE_TYPE {
 	ONE_ON_ONE_CHAT = 1;
@@ -24001,9 +24001,10 @@ enum XMPP_STATUS {
 }
 
 enum default {
-	STATIC = 0;
-	DYNAMIC = 1;
-	BIOMETRIC = 2;
+	bottom = 0;
+	left = 0;
+	right = 0;
+	top = 0;
 }
 
 enum defaultProps {
