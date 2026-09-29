@@ -1,7 +1,7 @@
 syntax = "proto2";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1048775404
+/// WhatsApp Version: 2.3000.1048792267
 
 enum ABOUT_CONSUMPTION_SURFACE_TYPE {
 	ONE_ON_ONE_CHAT = 1;
@@ -10214,7 +10214,6 @@ enum LeadStage {
 	QUALIFIED = 2;
 	CONVERTED = 3;
 	LOST = 4;
-	NOT_QUALIFIED = 5;
 }
 
 message LegacyMessage {
