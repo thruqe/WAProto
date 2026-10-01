@@ -1,7 +1,7 @@
 syntax = "proto2";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1048977937
+/// WhatsApp Version: 2.3000.1048989295
 
 enum ABOUT_CONSUMPTION_SURFACE_TYPE {
 	ONE_ON_ONE_CHAT = 1;
@@ -268,6 +268,8 @@ enum ACTION_TYPE {
 	AUTO_LOGIN = 80;
 	BIOMETRICS_VERIFY_SUCCESS = 81;
 	BIOMETRICS_VERIFY_FAIL = 82;
+	TRUSTED_DEVICE_OPT_IN = 83;
+	TRUSTED_DEVICE_OPT_OUT = 84;
 }
 
 enum ACTIVE_TIME_AFTER_PAIRING {
@@ -3926,6 +3928,7 @@ enum CHAT_FILTER_TYPES {
 	BUSINESS_FOLDER = 28;
 	TO_YOU = 29;
 	META_AI = 30;
+	ONE_ON_ONE = 31;
 }
 
 enum CHAT_GATED_REASON {
@@ -4891,9 +4894,14 @@ message CallLogRecord {
 		LIGHTWEIGHT = 3;
 	}
 
+	message GuestInfo {
+		optional string pushName = 1;
+	}
+
 	message ParticipantInfo {
 		optional string userJid = 1;
 		optional CallLogRecord.CallResult callResult = 2;
+		optional CallLogRecord.GuestInfo guestInfo = 3;
 	}
 
 	optional CallLogRecord.CallResult callResult = 1;
@@ -10905,6 +10913,7 @@ enum MEDIA_TYPE {
 	MUSIC = 80;
 	POLL_ADD_OPTION = 81;
 	TEE_TOOL_RESPONSE = 82;
+	SOUND_STICKER = 83;
 }
 
 enum MEDIA_UPLOAD_MODE_TYPE {
@@ -14109,6 +14118,7 @@ enum MutationProps {
 	CONTACT_MANAGER_METADATA_ACTION = 95;
 	BUSINESS_FOLDER_ACTIVATION_ACTION = 96;
 	GROUP_HISTORY_TOGGLE_ACTION = 97;
+	BB_PRO_PENDING_CUSTOMER_BASE_ACTION = 98;
 	SHARE_OWN_PN = 10001;
 	BUSINESS_BROADCAST_ACTION = 10002;
 	AI_THREAD_DELETE_ACTION = 10003;
@@ -15685,7 +15695,6 @@ enum PLATFORM_TYPE {
 	MSGROC = 38;
 	MSGRM = 43;
 	IGDM = 44;
-	WEARM = 45;
 	CAPI = 46;
 	XR = 47;
 	MACOS = 48;
@@ -20293,6 +20302,10 @@ message SyncActionValue {
 		repeated SyncActionValue.StickerAction recentAvatarStickers = 2;
 	}
 
+	message BBProPendingCustomerBaseAction {
+		optional bool pending = 1;
+	}
+
 	message BizAISettingsNudgeAction {
 		enum BizAISettingsCategory {
 			UNKNOWN = 0;
@@ -21060,6 +21073,7 @@ message SyncActionValue {
 	optional SyncActionValue.ContactManagerMetadataAction contactManagerMetadataAction = 95;
 	optional SyncActionValue.BusinessFolderActivationAction businessFolderActivationAction = 96;
 	optional SyncActionValue.GroupHistoryToggleAction groupHistoryToggleAction = 97;
+	optional SyncActionValue.BBProPendingCustomerBaseAction bbProPendingCustomerBaseAction = 98;
 }
 
 message SyncdIndex {
@@ -23545,6 +23559,7 @@ enum WSUA_SCREEN {
 	CONSUMER_SUBS_PAYMENT_ABANDONMENT_NOTIF = 92;
 	BIZ_SUB_VERIFICATION_ELIGIBLE_NOTIFICATION = 93;
 	BIZ_SUB_VERIFICATION_ELIGIBLE_BUSINESS_ALERT = 94;
+	BIZ_SUBS_PAYMENT_ABANDONMENT_NOTIF = 95;
 }
 
 enum WSUA_SCREEN_ELEMENT {
