@@ -1,7 +1,7 @@
 syntax = "proto2";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1049279957
+/// WhatsApp Version: 2.3000.1049282529
 
 enum ABOUT_CONSUMPTION_SURFACE_TYPE {
 	ONE_ON_ONE_CHAT = 1;
@@ -1876,6 +1876,7 @@ message BotCapabilityMetadata {
 		AI_STOP_GENERATION_ENABLED = 70;
 		AI_RICH_RESPONSE_3P_LINKING_CARD_ENABLED = 71;
 		HATCH_NOTIFICATION_METADATA_EVENT_ENABLED = 72;
+		HATCH_CONNECTOR_ACTION_CARD_ENABLED = 76;
 	}
 
 	repeated BotCapabilityMetadata.BotCapabilityType capabilities = 1;
