@@ -1,7 +1,7 @@
 syntax = "proto2";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1049387914
+/// WhatsApp Version: 2.3000.1049395099
 
 enum ABOUT_CONSUMPTION_SURFACE_TYPE {
 	ONE_ON_ONE_CHAT = 1;
@@ -6769,6 +6769,21 @@ message DeviceCapabilities {
 		optional uint64 chatDbMigrationTimestamp = 1;
 	}
 
+	message NewsletterChatsMigration {
+		optional bool effectiveMigrated = 1;
+		optional int64 countdownEndsAt = 2;
+		optional bool rolledBack = 3;
+	}
+
+	message ReverseHistorySync {
+		enum Product {
+			PRODUCT_UNSPECIFIED = 0;
+			HATCH = 1;
+		}
+
+		repeated DeviceCapabilities.ReverseHistorySync.Product enabledProducts = 1;
+	}
+
 	message UserHasAvatar {
 		optional bool userHasAvatar = 1;
 	}
@@ -6782,6 +6797,8 @@ message DeviceCapabilities {
 	optional DeviceCapabilities.AiFbidMigration aiFbidMigration = 7;
 	optional DeviceCapabilities.BizAiSettingsSync bizAiSettingsSync = 8;
 	optional DeviceCapabilities.ContactRefresh contactRefresh = 9;
+	optional DeviceCapabilities.ReverseHistorySync reverseHistorySync = 10;
+	optional DeviceCapabilities.NewsletterChatsMigration newsletterChatsMigration = 11;
 }
 
 message DeviceConsistencyCodeMessage {
