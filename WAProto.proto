@@ -1,7 +1,7 @@
 syntax = "proto2";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1049587578
+/// WhatsApp Version: 2.3000.1049604663
 
 enum ABOUT_CONSUMPTION_SURFACE_TYPE {
 	ONE_ON_ONE_CHAT = 1;
@@ -8462,6 +8462,7 @@ message GlobalSettings {
 enum GraphQLErrorCode {
 	INVALID_ACCESS_TOKEN = 190;
 	RATE_LIMIT_EXCEEDED = 1675004;
+	CONTACT_MANAGER_SUBSCRIPTION_REQUIRED = 2494193;
 	BUSINESS_BANHAMMERED = 2859017;
 	AD_ACCOUNT_LINKING_DISABLED = 2859050;
 }
@@ -23530,14 +23531,6 @@ enum WAP_JID_SUBTYPE {
 	JID_AD = 1;
 	JID_FB = 3;
 	JID_INTEROP = 4;
-}
-
-enum WATheiaRaTlsState {
-	INIT = 0;
-	CONNECTING = 1;
-	CONNECTED = 2;
-	CLOSED = 3;
-	ERROR = 4;
 }
 
 enum WAWebHatchNoiseService {
