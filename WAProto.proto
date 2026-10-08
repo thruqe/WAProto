@@ -1,7 +1,7 @@
 syntax = "proto2";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1049703040
+/// WhatsApp Version: 2.3000.1049711438
 
 enum ABOUT_CONSUMPTION_SURFACE_TYPE {
 	ONE_ON_ONE_CHAT = 1;
@@ -18306,6 +18306,12 @@ enum REPORTING_TOKEN_VERSION {
 	V3 = 3;
 }
 
+enum REPORT_STATUS {
+	SUCCESS = 0;
+	FAILURE = 1;
+	STARTED = 2;
+}
+
 enum REPORT_TO_ADMIN_INTERACTION {
 	CLICK_OPEN_ADMIN_DASHBOARD = 0;
 	CLICK_SEND_FOR_ADMIN_REVIEW = 1;
@@ -20840,6 +20846,14 @@ enum SmaxRunnerFunctionName {
 	SignedPreKeyPrivate = 13;
 	SignedPreKeySignature = 14;
 	BigEndian = 15;
+}
+
+enum SpamReportErrorCode {
+	SUCCESS = 0;
+	DELIVERY_FAILURE = -1;
+	NETWORK_UNAVAILABLE = -2;
+	UNKNOWN = -3;
+	CANCELLED = -4;
 }
 
 enum SpecialKeyMap {
@@ -23531,6 +23545,14 @@ enum WAP_JID_SUBTYPE {
 	JID_AD = 1;
 	JID_FB = 3;
 	JID_INTEROP = 4;
+}
+
+enum WATheiaRaTlsState {
+	INIT = 0;
+	CONNECTING = 1;
+	CONNECTED = 2;
+	CLOSED = 3;
+	ERROR = 4;
 }
 
 enum WAWebHatchNoiseService {
