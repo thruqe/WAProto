@@ -1,7 +1,7 @@
 syntax = "proto2";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1049711438
+/// WhatsApp Version: 2.3000.1049721894
 
 enum ABOUT_CONSUMPTION_SURFACE_TYPE {
 	ONE_ON_ONE_CHAT = 1;
@@ -5527,6 +5527,8 @@ message ContextInfo {
 		HEVC_VIDEO_CHILD = 8;
 		AV1_VIDEO_PARENT = 9;
 		AV1_VIDEO_CHILD = 10;
+		STREAMED_VIDEO_PARENT = 11;
+		STREAMED_VIDEO_CHILD = 12;
 	}
 
 	enum QuotedType {
@@ -9020,6 +9022,7 @@ enum IMAGINE_ACTION {
 	AI_MEDIA_EDITOR_REGENERATE = 143;
 	AI_MEDIA_EDITOR_SEND = 144;
 	AI_MEDIA_EDITOR_DONE = 145;
+	AI_MEDIA_EDITOR_UNDO_CLICKED = 146;
 }
 
 enum IMAGINE_ACTION_SOURCE {
@@ -11258,6 +11261,11 @@ enum MEDIA_AUTO_DOWNLOAD_QUALITY {
 	HD_QUALITY = 2;
 }
 
+enum MEDIA_CONTAINER_TYPE {
+	FLAT_MP4 = 1;
+	FRAGMENTED_MP4 = 2;
+}
+
 enum MEDIA_DOWNLOAD_MODE_TYPE {
 	MANUAL = 1;
 	FULL = 2;
@@ -11709,6 +11717,9 @@ enum MESSAGE_CONTEXT_MENU_OPTION_TYPE {
 	REMOVE_TRANSLATION = 38;
 	SELECT_TEXT = 39;
 	COPY_SELECTION = 40;
+	VIEW_STICKER = 41;
+	ADD_STICKER_TO_FAVORITES = 42;
+	REMOVE_STICKER_FROM_FAVORITES = 43;
 }
 
 enum MESSAGE_DISTRIBUTION_ENUM_TYPE {
@@ -14168,6 +14179,17 @@ message Message {
 		optional ContextInfo contextInfo = 1;
 	}
 
+	message RequestLocationUpdateMessage {
+		enum UpdateType {
+			UNKNOWN = 0;
+			CANCEL = 1;
+		}
+
+		optional MessageKey key = 1;
+		optional Message.RequestLocationUpdateMessage.UpdateType updateType = 2;
+		optional int64 senderTimestampMs = 3;
+	}
+
 	message RequestPaymentMessage {
 		optional Message noteMessage = 4;
 		optional string currencyCodeIso4217 = 1;
@@ -14647,6 +14669,7 @@ message Message {
 	optional Message.ImageMessage instantImageMessage = 135;
 	optional Message.RequestLocationMessage requestLocationMessage = 136;
 	optional Message.FutureProofMessage botGroupParticipantMessage = 137;
+	optional Message.RequestLocationUpdateMessage requestLocationUpdateMessage = 138;
 }
 
 message MessageAddOn {
@@ -14656,6 +14679,7 @@ message MessageAddOn {
 		EVENT_RESPONSE = 2;
 		POLL_UPDATE = 3;
 		PIN_IN_CHAT = 4;
+		REQUEST_LOCATION_UPDATE = 5;
 	}
 
 	optional MessageAddOn.MessageAddOnType messageAddOnType = 1;
@@ -14697,6 +14721,7 @@ message MessageAssociation {
 		HEVC_VIDEO_DUAL_UPLOAD = 19;
 		POLL_ADD_OPTION = 20;
 		AV1_VIDEO_DUAL_UPLOAD = 21;
+		STREAMED_HD_VIDEO_DUAL_UPLOAD = 22;
 	}
 
 	optional MessageAssociation.AssociationType associationType = 1;
@@ -15184,6 +15209,7 @@ enum MutationProps {
 	BUSINESS_FOLDER_ACTIVATION_ACTION = 96;
 	GROUP_HISTORY_TOGGLE_ACTION = 97;
 	BB_PRO_PENDING_CUSTOMER_BASE_ACTION = 98;
+	COMMUNITY_NESTING_STATE_ACTION = 99;
 	SHARE_OWN_PN = 10001;
 	BUSINESS_BROADCAST_ACTION = 10002;
 	AI_THREAD_DELETE_ACTION = 10003;
@@ -15999,6 +16025,10 @@ enum PAIRED_MEDIA_TYPE {
 	HEVC_VIDEO_CHILD = 7;
 	AV1_VIDEO_PARENT = 8;
 	AV1_VIDEO_CHILD = 9;
+	STREAMED_VIDEO_PARENT = 10;
+	STREAMED_VIDEO_CHILD = 11;
+	STREAMED_HEVC_VIDEO_PARENT = 12;
+	STREAMED_HEVC_VIDEO_CHILD = 13;
 }
 
 enum PARTICIPANT_ACTION_SOURCE {
@@ -19971,6 +20001,10 @@ enum STICKER_ADD_TO_FAVORITE_ORIGIN_TYPE {
 	DISCOVERY_PACK = 7;
 	STICKER_MAKER = 8;
 	MEDIA_HUB = 9;
+	MULTI_DEVICE_SYNC = 10;
+	MESSAGE_MENU = 11;
+	STICKER_DETAILS_FROM_MENU = 12;
+	STICKER_DETAILS_FROM_TAP = 13;
 }
 
 enum STICKER_ERROR_TYPE {
@@ -20049,6 +20083,20 @@ enum STICKER_TYPE {
 	QUESTION_ANSWER = 17;
 	REACTION_STICKER = 18;
 	NYE_2026 = 19;
+}
+
+enum STREAMING_ABANDON_REASON_TYPE {
+	UPLOAD_FAILED = 1;
+	PROCESSING_FAILED = 2;
+	OUTPUT_INVALIDATED = 3;
+}
+
+enum STREAMING_UPLOAD_OUTCOME_TYPE {
+	NOT_ATTEMPTED = 1;
+	STREAMED = 2;
+	FAILED_AFTER_CLAIM = 3;
+	ABANDONED_BEFORE_CONNECT = 4;
+	ABANDONED_AFTER_CONNECT = 5;
 }
 
 enum STREAM_SOCKET_PROVIDER_TYPE {
@@ -21215,6 +21263,16 @@ message SyncActionValue {
 		optional uint64 version = 1;
 	}
 
+	message CommunityNestingStateAction {
+		enum NestingState {
+			NESTING_STATE_UNKNOWN = 0;
+			NESTING_STATE_NESTED = 1;
+			NESTING_STATE_UNNESTED = 2;
+		}
+
+		optional SyncActionValue.CommunityNestingStateAction.NestingState nestingState = 1;
+	}
+
 	message ContactAction {
 		optional string fullName = 1;
 		optional string firstName = 2;
@@ -21898,6 +21956,7 @@ message SyncActionValue {
 	optional SyncActionValue.BusinessFolderActivationAction businessFolderActivationAction = 96;
 	optional SyncActionValue.GroupHistoryToggleAction groupHistoryToggleAction = 97;
 	optional SyncActionValue.BBProPendingCustomerBaseAction bbProPendingCustomerBaseAction = 98;
+	optional SyncActionValue.CommunityNestingStateAction communityNestingStateAction = 99;
 }
 
 message SyncdIndex {
@@ -23462,6 +23521,8 @@ enum WAFFLE_LIFECYCLE_ERROR_ACTION_TYPE {
 	PURGE = 3;
 	PAUSE = 4;
 	FAIL = 5;
+	REFRESH_TOKEN = 6;
+	REFETCH_CERTS = 7;
 }
 
 enum WAFFLE_LIFECYCLE_ERROR_CODE_TYPE {
@@ -23474,6 +23535,7 @@ enum WAFFLE_LIFECYCLE_ERROR_CODE_TYPE {
 	WF_STATE_MISMATCH = 6;
 	WF_SUSPENDED = 7;
 	UNKNOWN = 8;
+	PAYLOAD_ENC_DEC = 9;
 }
 
 enum WAFFLE_LIFECYCLE_LINK_STATE_TYPE {
@@ -23481,6 +23543,12 @@ enum WAFFLE_LIFECYCLE_LINK_STATE_TYPE {
 	ACTIVE = 1;
 	PAUSED = 2;
 	UNLINKED = 3;
+}
+
+enum WAFFLE_LIFECYCLE_PKI_VERSION_TYPE {
+	NOT_APPLICABLE = 0;
+	V1 = 1;
+	V2 = 2;
 }
 
 enum WAFFLE_LIFECYCLE_TRACE_ACTION_TYPE {
