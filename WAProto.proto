@@ -1,7 +1,7 @@
 syntax = "proto2";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1049748952
+/// WhatsApp Version: 2.3000.1049761884
 
 enum ABOUT_CONSUMPTION_SURFACE_TYPE {
 	ONE_ON_ONE_CHAT = 1;
@@ -6384,6 +6384,7 @@ enum DGWStreamGroupError {
 	TRANSPORT_BAD_REQUEST = 7;
 	TRANSPORT_DGW_SERVER_ERROR = 8;
 	TRANSPORT_NORMAL_CLOSURE = 9;
+	TRANSPORT_DEAUTH = 10;
 }
 
 enum DIALOG_EVENT_TYPE {
