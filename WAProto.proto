@@ -1,7 +1,7 @@
 syntax = "proto2";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1049812166
+/// WhatsApp Version: 2.3000.1049818161
 
 enum ABOUT_CONSUMPTION_SURFACE_TYPE {
 	ONE_ON_ONE_CHAT = 1;
@@ -17848,7 +17848,6 @@ enum PerfOptimizationFlag {
 	OPERATION_QUEUE_YIELD = 5;
 	LOG_RING_BUFFER = 6;
 	WORKLET_PRELOAD = 7;
-	SCTP_PREWARM = 8;
 	WEBTRANSPORT_SEND_RING = 9;
 	MAX_FLAG = 30;
 }
