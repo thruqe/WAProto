@@ -1,7 +1,7 @@
 syntax = "proto2";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1050006171
+/// WhatsApp Version: 2.3000.1050009994
 
 enum ABOUT_CONSUMPTION_SURFACE_TYPE {
 	ONE_ON_ONE_CHAT = 1;
@@ -15121,6 +15121,12 @@ enum MsgProcessStage {
 message MsgRowOpaqueData {
 	optional MsgOpaqueData currentMsg = 1;
 	optional MsgOpaqueData quotedMsg = 2;
+}
+
+enum MuseDefaultAssistantVariant {
+	MetaAI = 0;
+	MuseAfterLinking = 1;
+	MuseAlways = 2;
 }
 
 enum MutationProps {
