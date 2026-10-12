@@ -1,7 +1,7 @@
 syntax = "proto2";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1050063423
+/// WhatsApp Version: 2.3000.1050109625
 
 enum ABOUT_CONSUMPTION_SURFACE_TYPE {
 	ONE_ON_ONE_CHAT = 1;
@@ -12380,6 +12380,22 @@ enum MUTE_ORIGIN {
 	CHATS_TAB_STATUS_TRAY = 3;
 }
 
+message MandrakeCreateMmkInput {
+	optional bytes exportRootKey = 1;
+	optional uint64 epochNumber = 2;
+	optional bytes epochHead = 3;
+	optional MessagingMailboxPublicData prevMmk = 4;
+	repeated DetachedDevicePublicData currentPeers = 5;
+	repeated DetachedDevicePublicData newPeers = 6;
+}
+
+message MandrakeCreateMmkResult {
+	oneof result {
+		SignedMmkDistributionFromMailbox success = 1;
+		string errorMessage = 2;
+	}
+}
+
 message MandrakeDecryptMekInput {
 	message EpochSenderPublicData {
 		optional EpochPublicData epochPublicData = 1;
@@ -13635,6 +13651,8 @@ message Message {
 		enum MusicMessageStyle {
 			UNKNOWN = 0;
 			VINYL = 1;
+			MESSAGE_BUBBLE = 2;
+			LYRICS = 3;
 		}
 
 		optional EmbeddedMusic embeddedMusic = 1;
@@ -14852,6 +14870,7 @@ message MinosCommand {
 		DeriveMessagingMailboxKeypairsInput deriveMessagingMailboxKeypairs = 29;
 		DecryptSelfMmkDistributionInput decryptSelfMmkDistribution = 30;
 		MandrakeValidateAndDecryptSelfMmkInput mandrakeValidateAndDecryptSelfMmk = 31;
+		MandrakeCreateMmkInput mandrakeCreateMmk = 32;
 	}
 }
 
@@ -24843,6 +24862,10 @@ message WebMessageInfo {
 		CAMEO_CHAT_EXPIRED = 267;
 		GROUP_PUSHNAME_SHARED = 270;
 		BIZ_POST_SEND_OPT_OUT = 271;
+		CHAT_WITH_BUSINESS_IN_DIRECTORY = 283;
+		META_AI_THREAD_CREATED = 284;
+		META_AI_CONNECTOR_LINKED = 285;
+		SPLIT_PAYMENT_MARKED_AS_PAID = 289;
 	}
 
 	optional MessageKey key = 1;
