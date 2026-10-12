@@ -1,7 +1,7 @@
 syntax = "proto2";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1050031415
+/// WhatsApp Version: 2.3000.1050037037
 
 enum ABOUT_CONSUMPTION_SURFACE_TYPE {
 	ONE_ON_ONE_CHAT = 1;
@@ -5005,6 +5005,7 @@ enum CallLogResult {
 	AcceptedElsewhere = 6;
 	Failed = 7;
 	ConnectedLonely = 8;
+	ScreenedElsewhere = 9;
 }
 
 enum CallParticipantState {
