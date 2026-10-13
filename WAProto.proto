@@ -1,7 +1,7 @@
 syntax = "proto2";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1050182637
+/// WhatsApp Version: 2.3000.1050189019
 
 enum ABOUT_CONSUMPTION_SURFACE_TYPE {
 	ONE_ON_ONE_CHAT = 1;
@@ -14818,6 +14818,12 @@ message MessageSecretMessage {
 	optional bytes encPayload = 3;
 }
 
+enum MessageSentAckErrorCode {
+	MessageNotAllowed = 420;
+	StaleGroupAddressingMode = 421;
+	NewChatMessagesCapped = 475;
+}
+
 message MessageText {
 	optional string text = 1;
 	repeated string mentionedJid = 2;
@@ -15426,9 +15432,8 @@ enum NS_MODE {
 
 enum NackReason {
 	UnsupportedMessage = 415;
-	MessageNotAllowed = 420;
-	StaleGroupAddressingMode = 421;
-	NewChatMessagesCapped = 475;
+	InvalidReportingToken = 420;
+	MissingReportingToken = 421;
 	ParsingError = 487;
 	UnrecognizedStanza = 488;
 	UnrecognizedStanzaClass = 489;
