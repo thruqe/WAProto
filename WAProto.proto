@@ -1,7 +1,7 @@
 syntax = "proto2";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1050155565
+/// WhatsApp Version: 2.3000.1050162058
 
 enum ABOUT_CONSUMPTION_SURFACE_TYPE {
 	ONE_ON_ONE_CHAT = 1;
@@ -4917,7 +4917,8 @@ enum CallEvent {
 	MlNoiseSuppressionUiEnabled = 175;
 	SelfCameraAutoOff = 176;
 	CallScreening = 177;
-	Max = 178;
+	SwitchEntryPointChanged = 178;
+	Max = 179;
 }
 
 enum CallFatalReasonCode {
