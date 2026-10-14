@@ -1,7 +1,7 @@
 syntax = "proto2";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1050340960
+/// WhatsApp Version: 2.3000.1050372399
 
 enum ABOUT_CONSUMPTION_SURFACE_TYPE {
 	ONE_ON_ONE_CHAT = 1;
@@ -6250,6 +6250,11 @@ enum DEEP_LINK_TYPE {
 	DEEP_LINK_SETTINGS_EVENTS_HOME = 263;
 	DEEP_LINK_ADVANTAGE_PLUS_AUDIENCE = 264;
 	DEEP_LINK_MIDFLIGHT_DURATION = 265;
+}
+
+enum DEFAULT_ASPECT_RATIO_PARAMS {
+	aspect_ratio_denominator = 16;
+	aspect_ratio_numerator = 9;
 }
 
 enum DEFAULT_AUDIENCE_LOCATION_TYPE {
@@ -23809,6 +23814,12 @@ enum WA_VOIP_HISTORY_SAVE_CALL_RECORD_CONDITION_CHECK_STATUS {
 	PEER_HAS_NETWORK_TRANSITION = 7;
 	CALL_TOO_SHORT = 8;
 	PASS = 100;
+}
+
+enum WDSPreviewListItemAvatarPx {
+	comfortable = 48;
+	compact = 40;
+	singleLine = 24;
 }
 
 enum WEBC_APPCACHE_STATUS_CODE {
