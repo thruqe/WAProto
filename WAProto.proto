@@ -1,7 +1,7 @@
 syntax = "proto2";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1050588369
+/// WhatsApp Version: 2.3000.1050603634
 
 enum ABOUT_CONSUMPTION_SURFACE_TYPE {
 	ONE_ON_ONE_CHAT = 1;
@@ -1698,6 +1698,71 @@ enum BUSY_REASON {
 	WA_CALL_RINGING_OR_PENDING = 2;
 }
 
+enum BUTTON_ACTION_TYPE {
+	UNKNOWN = 0;
+	QUICK_REPLY = 1;
+	CTA_URL = 2;
+	CTA_CALL = 3;
+	LANDLINE_CALL = 4;
+	VOICE_CALL = 5;
+	VIDEO_CALL = 6;
+	CALL_PERMISSION_REQUEST = 7;
+	CTA_COPY = 8;
+	OTP_COPY_CODE = 9;
+	OTP_ONE_TAP = 10;
+	CTA_REMINDER = 11;
+	CTA_CANCEL_REMINDER = 12;
+	SEND_LOCATION = 13;
+	LOCATION_REQUEST = 14;
+	SINGLE_SELECT = 15;
+	CTA_CATALOG = 16;
+	CATALOG_MESSAGE = 17;
+	VIEW_CATALOG_GREETING = 18;
+	VIEW_PRODUCT = 19;
+	MPM = 20;
+	SPM = 21;
+	CTA_APP_LINK = 22;
+	OPEN_WEBVIEW = 23;
+	FLOW = 24;
+	FORM_MESSAGE = 25;
+	ADDRESS_MESSAGE = 26;
+	REVIEW_AND_PAY = 27;
+	REVIEW_ORDER = 28;
+	ORDER_DETAILS = 29;
+	ORDER_STATUS = 30;
+	PAYMENT_INFO = 31;
+	PAYMENT_KEY_INFO = 32;
+	PIX_CODE_COPY = 33;
+	PAYMENT_METHOD = 34;
+	PAYMENT_STATUS = 35;
+	BR_PAYMENT_STATE = 36;
+	SEND_PAYMENT = 37;
+	PAYMENT_REQUEST = 38;
+	UNIVERSAL_PAYMENT_REQUEST = 39;
+	SPLIT_PAYMENT = 40;
+	PAYMENT_REMINDER = 41;
+	OFFER_PAYMENT_ACCOUNT = 42;
+	PAYMENT_TRANSACTION_DETAILS = 43;
+	PAYMENT_LEARN_MORE = 44;
+	PAYMENT_PIN_RESET = 45;
+	PAYMENTS_CARE_CSAT = 46;
+	MESSAGE_WITH_LINK_STATUS = 47;
+	BOOKING_CONFIRMATION = 48;
+	BOOKING_STATUS = 49;
+	APPOINTMENT = 50;
+	INAPP_SIGNUP = 51;
+	API_SIGNUP = 52;
+	ACCOUNT_AUTHENTICATION_REQUEST = 53;
+	REQUEST_CONTACT_INFO = 54;
+	AGENT_API_KEY = 55;
+	PSI_OPT_IN = 56;
+	PSI_OPT_OUT = 57;
+	PASSKEY = 58;
+	POSTBACK = 59;
+	A2UI_REPLY_ACTION = 60;
+	LEGACY_RESPONSE = 61;
+}
+
 enum BannerState {
 	VIEWED = 0;
 	DISMISSED = 1;
@@ -2824,6 +2889,8 @@ enum CALL_FROM_UI {
 	GROUP_INFO_BOTTOM_SHEET_CHATS_TAB = 88;
 	GROUP_INFO_BOTTOM_SHEET_CALLS_TAB = 89;
 	CONTACTS_TAB = 90;
+	ALEXA_VUI = 91;
+	INCOMING_CALL_SCREEN = 92;
 }
 
 enum CALL_LINK_ACTION {
@@ -3989,6 +4056,7 @@ enum CHAT_FILTER_TYPES {
 	META_AI = 30;
 	ONE_ON_ONE = 31;
 	EVENTS = 32;
+	POLLS = 33;
 }
 
 enum CHAT_GATED_REASON {
@@ -4075,6 +4143,37 @@ enum CHAT_WALLPAPER_TYPE {
 	SOLID = 3;
 	CUSTOM = 4;
 	DEFAULT = 5;
+}
+
+enum CLICK_COMPONENT_TYPE {
+	UNKNOWN = 0;
+	TEXT_WEB_URL = 1;
+	TEXT_MARKDOWN_LINK = 2;
+	TEXT_PHONE_NUMBER = 3;
+	TEXT_EMAIL = 4;
+	TEXT_ADDRESS = 5;
+	TEXT_DATE_TIME = 6;
+	TEXT_OTP_CODE = 7;
+	TEXT_PAYMENT_DETECTION = 8;
+	TEXT_PAYMENT_LINK = 9;
+	LINK_PREVIEW = 10;
+	LINK_PREVIEW_INLINE_VIDEO = 11;
+	CTWA_AD_HEADER = 12;
+	HEADER_MEDIA = 13;
+	HEADER_PRODUCT = 14;
+	HEADER_LINK = 15;
+	BODY_LINK = 16;
+	FOOTER_LINK = 17;
+	BUTTON = 18;
+	LIST_OPEN = 19;
+	LIST_ROW = 20;
+	PRODUCT_LIST_ITEM = 21;
+	CAROUSEL_CARD_MEDIA = 22;
+	CAROUSEL_CARD_BUTTON = 23;
+	PRODUCT_CARD = 24;
+	CATALOG_CARD = 25;
+	BUSINESS_PILL = 26;
+	BLOKS_WIDGET = 27;
 }
 
 enum CLIENT_GROUP_SIZE_BUCKET {
@@ -9414,6 +9513,11 @@ enum INTERACTION_TYPE {
 	SEND_PAYMENT_RECIPIENT_UNAVAILABLE_ACTION = 116;
 	SEND_PAYMENT_RETURNED_WITHOUT_AUTH = 117;
 	OTHER_WAYS_TO_PAY_VIEW = 118;
+	LINK_CLICK = 119;
+	BUTTON_CLICK = 120;
+	LIST_ROW_SELECT = 121;
+	LINK_LONG_PRESS_OPEN = 122;
+	LINK_COPY = 123;
 }
 
 enum INVISIBLE_MESSAGE_CATEGORY_TYPE {
@@ -9782,6 +9886,17 @@ enum LID_MIGRATION_STAGE_ENUM {
 	HISTORY_MIGRATED = 3;
 }
 
+enum LINK_CATEGORY_TYPE {
+	UNKNOWN = 0;
+	WEB_EXTERNAL = 1;
+	WEB_BUSINESS_WEBSITE = 2;
+	WEB_META = 3;
+	WHATSAPP_DEEP_LINK = 4;
+	APP_SCHEME = 5;
+	PHONE = 6;
+	EMAIL = 7;
+}
+
 enum LIST_ACTION {
 	CREATE = 1;
 	DELETE = 2;
@@ -9811,6 +9926,7 @@ enum LIST_TYPE {
 	SERVER_ASSIGNED = 10;
 	TO_YOU = 11;
 	ONE_ON_ONE = 12;
+	BUSINESS_FOLDER = 13;
 }
 
 enum LIST_UPDATE_USER_JOURNEY_ACTION {
@@ -15127,6 +15243,27 @@ message MsgOpaqueData {
 		optional bytes jpegThumbnail = 6;
 	}
 
+	message MusicData {
+		optional string musicContentMediaId = 1;
+		optional string songId = 2;
+		optional string author = 3;
+		optional string title = 4;
+		optional string songUri = 5;
+		optional string artworkUri = 6;
+		optional int32 style = 7;
+		optional int32 songStartTimeMs = 8;
+		optional int32 clipDurationMs = 9;
+		optional bool isExplicit = 10;
+		optional bytes countryBlocklist = 11;
+		optional string artistAttribution = 12;
+		optional string artworkDirectPath = 13;
+		optional bytes artworkSha256 = 14;
+		optional bytes artworkEncSha256 = 15;
+		optional bytes artworkMediaKey = 16;
+		optional int64 consumptionCheckedAtS = 17;
+		optional bool isAvailableForConsumption = 18;
+	}
+
 	message PollOption {
 		optional string name = 1;
 		optional string hash = 2;
@@ -15199,6 +15336,7 @@ message MsgOpaqueData {
 	optional string sharableEventInviteCallLink = 60;
 	optional string mediaPngThumbnail = 61;
 	optional string qrUrl = 62;
+	optional MsgOpaqueData.MusicData musicData = 63;
 }
 
 enum MsgProcessStage {
@@ -20063,6 +20201,7 @@ enum STATUS_VIEW_ACTION_TYPE {
 	CLOSE_SHARING_EMOJI_CLICK = 7;
 	URL_CLICK = 8;
 	REPLY_UI_OPENED = 9;
+	SPEED_UP_HOLD = 10;
 }
 
 enum STATUS_VIEW_ENTRY_METHOD {
@@ -20221,6 +20360,9 @@ enum STRUCTURED_MESSAGE_CLASS {
 	BUTTON_NFM = 4;
 	PRODUCT_ITEM = 5;
 	SHOP_STOREFRONT = 6;
+	TEXT = 7;
+	MEDIA_CAPTION = 8;
+	CAROUSEL_CARD = 9;
 }
 
 enum STW_ENTRY_POINT {
