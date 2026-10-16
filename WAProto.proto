@@ -1,7 +1,7 @@
 syntax = "proto2";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1050603634
+/// WhatsApp Version: 2.3000.1050625872
 
 enum ABOUT_CONSUMPTION_SURFACE_TYPE {
 	ONE_ON_ONE_CHAT = 1;
@@ -15454,6 +15454,7 @@ enum MutationProps {
 	GROUP_HISTORY_TOGGLE_ACTION = 97;
 	BB_PRO_PENDING_CUSTOMER_BASE_ACTION = 98;
 	COMMUNITY_NESTING_STATE_ACTION = 99;
+	SHARED_DEVICE_SECRET_ACTION = 100;
 	SHARE_OWN_PN = 10001;
 	BUSINESS_BROADCAST_ACTION = 10002;
 	AI_THREAD_DELETE_ACTION = 10003;
@@ -21970,6 +21971,11 @@ message SyncActionValue {
 		optional bool allowed = 1;
 	}
 
+	message SharedDeviceSecretAction {
+		optional bytes secret = 1;
+		optional int64 ttlMs = 2;
+	}
+
 	message StarAction {
 		optional bool starred = 1;
 	}
@@ -22208,6 +22214,7 @@ message SyncActionValue {
 	optional SyncActionValue.GroupHistoryToggleAction groupHistoryToggleAction = 97;
 	optional SyncActionValue.BBProPendingCustomerBaseAction bbProPendingCustomerBaseAction = 98;
 	optional SyncActionValue.CommunityNestingStateAction communityNestingStateAction = 99;
+	optional SyncActionValue.SharedDeviceSecretAction sharedDeviceSecretAction = 100;
 }
 
 message SyncdIndex {
@@ -23871,6 +23878,14 @@ enum WAP_JID_SUBTYPE {
 	JID_AD = 1;
 	JID_FB = 3;
 	JID_INTEROP = 4;
+}
+
+enum WATheiaRaTlsState {
+	INIT = 0;
+	CONNECTING = 1;
+	CONNECTED = 2;
+	CLOSED = 3;
+	ERROR = 4;
 }
 
 enum WAWebHatchNoiseService {
