@@ -1,7 +1,7 @@
 syntax = "proto2";
 package waproto;
 
-/// WhatsApp Version: 2.3000.1050728964
+/// WhatsApp Version: 2.3000.1050732206
 
 enum ABOUT_CONSUMPTION_SURFACE_TYPE {
 	ONE_ON_ONE_CHAT = 1;
@@ -4143,6 +4143,13 @@ enum CHAT_WALLPAPER_TYPE {
 	SOLID = 3;
 	CUSTOM = 4;
 	DEFAULT = 5;
+}
+
+enum CHECK_CIRCLE_FILLED_CROP_VIEWBOX {
+	x = 2;
+	y = 2;
+	width = 20;
+	height = 20;
 }
 
 enum CLICK_COMPONENT_TYPE {
@@ -23590,6 +23597,13 @@ enum VALIDATION_STATUS {
 	UNKNOWN = 1;
 	NO_ACTION_REQUIRED = 2;
 	HAS_ERRORS = 3;
+}
+
+enum VERIFIED_BLUE_FIXED_BOX_VIEWBOX {
+	x = -1;
+	y = -1;
+	width = 27;
+	height = 27;
 }
 
 enum VERIFIED_LEVEL {
